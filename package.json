@@ -1,0 +1,15 @@
+{
+  "name": "atp-comic",
+  "version": "1.0.0",
+  "description": "A module for managing webcomics.",
+  "main": "src/index.jsx",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.repo/goes/here"
+  },
+  "author": "Andrew Wittrock",
+  "license": "MIT"
+}
