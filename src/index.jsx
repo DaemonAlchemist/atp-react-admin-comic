@@ -3,11 +3,18 @@
  */
 
 import React from "react";
-
-import dashboardTab from "./components/tabs/dashboard";
+import {Row} from "react-bootstrap";
 import {addTab} from "atp-ui";
 
+import comicPages from "./reducer/page";
+import {Arc} from "./reducer/arc";
+import Dashboard from "./components/dashboard";
+
+
 export default {
+    reducers: {
+        //comicPages
+    },
     init: {
         ui: {
             menus: {
@@ -19,7 +26,14 @@ export default {
                             dashboard: {
                                 label: <span><i className="fa fa-dashboard"></i> Dashboard</span>,
                                 sortOrder: 0,
-                                onClick: dispatch => dispatch(addTab(dashboardTab))
+                                onClick: dispatch => {
+                                    dispatch(Arc().action.list({}));
+                                    dispatch(addTab({
+                                        title: <span><i className="fa fa-dashboard" /> Comic Dashboard</span>,
+                                        id: () => 'comic-dashboard',
+                                        controller: () => <Dashboard />
+                                    }));
+                                }
                             }
                         }
                     }
