@@ -5,11 +5,10 @@
 import {connect} from "react-redux";
 import ArcTree from "../../components/arc/tree";
 import {Arc} from "../../reducer/arc";
-import {a} from "atp-sugar";
 
 export default connect(
     state => ({
-        arcs: Arc().selector.list(state, {}),
+        arcs: Arc().select.all(state, {}),
         parentArcId: false,
         offset: 0
     }),

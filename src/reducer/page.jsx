@@ -3,7 +3,7 @@
  */
 
 import {o} from "atp-sugar";
-import {entityBoilerplate, relatedEntityBoilerplate} from "atp-entity";
+import {entityBoilerplate} from "atp-redux-entity";
 import {arcType} from "./arc";
 
 export const pageType = 'comicPage';
@@ -15,4 +15,3 @@ export default (state, action) => o(action.type).switch({
 
 //Standard REST entity selectors and actions
 export const Page = () => entityBoilerplate(pageType, 'page');
-export const PageArc = pageId => relatedEntityBoilerplate(arcType, 'page/' + pageId + "/arc");
