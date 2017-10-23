@@ -13,6 +13,6 @@ export default () =>
            <ArcTree />
         </Col>
         <Col xs={9}>
-            Details go here
+            Details go here!
         </Col>
     </Row>

@@ -12,7 +12,9 @@ const ArcTree = props =>
             <TreeNode
                 key={arc.id}
                 id={arc.id}
-                getObject={() => arc}
+                getObject={props.getObject}
+                getContent={arc => arc.name}
+                getId={arc => arc.id}
                 getChildren={props.getChildren}
                 sorter={props.sorter}
             />
