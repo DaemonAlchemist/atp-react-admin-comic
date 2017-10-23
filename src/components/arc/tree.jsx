@@ -6,7 +6,7 @@ import React from "react";
 import {TreeNode} from 'atp-tree';
 
 const ArcTree = props =>
-    <ul style={{listStyleType: "none"}}>
+    <ul style={{listStyleType: "none", paddingLeft: 0}}>
         {props.arcIds.map(arcId =>
             <TreeNode
                 key={arcId}
