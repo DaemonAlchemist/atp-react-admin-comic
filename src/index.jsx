@@ -10,7 +10,6 @@ import comicPages from "./reducer/page";
 import {Arc} from "./reducer/arc";
 import Dashboard from "./components/dashboard";
 
-
 export default {
     reducers: {
         //comicPages
@@ -27,7 +26,6 @@ export default {
                                 label: <span><i className="fa fa-dashboard"></i> Dashboard</span>,
                                 sortOrder: 0,
                                 onClick: dispatch => {
-                                    dispatch(Arc().action.list({}));
                                     dispatch(addTab({
                                         title: <span><i className="fa fa-dashboard" /> Comic Dashboard</span>,
                                         id: () => 'comic-dashboard',

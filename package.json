@@ -35,9 +35,11 @@
   "dependencies": {
     "atp-redux-entity": "^0.1.0",
     "atp-sugar": "^0.4.2",
+    "atp-tree": "^0.1.1",
     "atp-ui": "^0.1.0",
     "react": "^16.0.0",
     "react-bootstrap": "^0.31.3",
+    "react-lifecycle-component": "^2.0.5",
     "react-redux": "^5.0.6"
   }
 }
