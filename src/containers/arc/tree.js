@@ -8,8 +8,10 @@ import {Arc} from "../../reducer/arc";
 
 export default connectWithLifecycle(
     state => ({
-        arcs: Arc().select.some(() => state, arc => !arc.parentId),
-        getObject: id => Arc().select.one(() => state, id),
+        arcIds: Arc().select.some(() => state, arc => !arc.parentId).map(arc => arc.id),
+        getObject: (state, id) => Arc().select.one(() => state, id),
+        getContent: arc => {console.log(arc); return arc.name},
+        getId: arc => arc.id,
         getChildren: (state, id) => Arc().select.some(() => state, arc => arc.parentId === id),
         sorter: (a, b) => a.sortOrder - b.sortOrder
     }),
