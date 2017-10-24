@@ -5,14 +5,17 @@
 import React from "react";
 import {Row} from "react-bootstrap";
 import {addTab} from "atp-ui";
+import {combineReducers} from 'redux';
 
-import comicPages from "./reducer/page";
-import {Arc} from "./reducer/arc";
-import Dashboard from "./components/dashboard";
+import dashboard from "./reducer/dashboard";
+
+import Dashboard from "./containers/dashboard";
 
 export default {
     reducers: {
-        //comicPages
+        comic: combineReducers({
+            dashboard
+        })
     },
     init: {
         ui: {

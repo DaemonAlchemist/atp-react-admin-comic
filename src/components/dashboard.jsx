@@ -3,16 +3,19 @@
  */
 
 import React from "react";
-import {Row, Col} from "react-bootstrap";
+import {Row, Col, Panel} from "react-bootstrap";
 
 import ArcTree from "../containers/arc/tree";
+import ArcDetails from "../containers/arc/details";
 
-export default () =>
+export default props =>
     <Row>
         <Col xs={3}>
-           <ArcTree />
+            <Panel header={<span><i className="fa fa-sitemap"></i> Story Arcs</span>}>
+                <ArcTree onClick={props.onClickArc}/>
+            </Panel>
         </Col>
         <Col xs={9}>
-            Details go here!
+            <ArcDetails id={props.selectedArcId} />
         </Col>
     </Row>

@@ -10,7 +10,7 @@ export default connectWithLifecycle(
     state => ({
         arcIds: Arc().select.some(() => state, arc => !arc.parentId).map(arc => arc.id),
         getObject: (state, id) => Arc().select.one(() => state, id),
-        getContent: arc => {console.log(arc); return arc.name},
+        getContent: arc => arc.name,
         getId: arc => arc.id,
         getChildren: (state, id) => Arc().select.some(() => state, arc => arc.parentId === id),
         sorter: (a, b) => a.sortOrder - b.sortOrder
@@ -19,7 +19,7 @@ export default connectWithLifecycle(
         componentDidMount: () => {
             dispatch(Arc().action.collection.get({}));
         },
-        onClick: arcId => dispatch(props.onClick(arcId)),
+        onClick: props.onClick,
         onMove: (arcId, targetId, position) => dispatch(props.onMove(arcId, targetId, position))
     })
 )(ArcTree);
