@@ -12,7 +12,7 @@ export default connect(
     }),
     (dispatch, props) => ({
         updateArc: (data, dispatch) => {dispatch(Arc().action.update(props.id, data));},
-        updateThumbnail: thumbnailFileId => {dispatch(Arc().action.update(props.id, {thumbnailFileId}));}
+        updateThumbnail: thumbnailFileId => {dispatch(Arc().action.update(props.id, {thumbnailFileId}));},
         updateBanner: bannerFileId => {dispatch(Arc().action.update(props.id, {bannerFileId}));}
     })
 )(ArcDetails);
