@@ -12,7 +12,7 @@ export default props =>
     <Row>
         <Col xs={3}>
             <Panel header={<span><i className="fa fa-sitemap"></i> Story Arcs</span>}>
-                <ArcTree onClick={props.onClickArc}/>
+                <ArcTree onClick={props.onClickArc} isSelected={props.isArcSelected}/>
             </Panel>
         </Col>
         <Col xs={9}>

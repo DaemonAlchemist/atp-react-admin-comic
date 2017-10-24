@@ -7,7 +7,7 @@ import ArcTree from "../../components/arc/tree";
 import {Arc} from "../../reducer/arc";
 
 export default connectWithLifecycle(
-    state => ({
+    (state, props) => ({
         arcIds: Arc().select.some(() => state, arc => !arc.parentId).map(arc => arc.id),
         getObject: (state, id) => Arc().select.one(() => state, id),
         getContent: arc => arc.name,
