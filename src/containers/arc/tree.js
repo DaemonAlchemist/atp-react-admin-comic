@@ -20,6 +20,12 @@ export default connectWithLifecycle(
             dispatch(Arc().action.collection.get({}));
         },
         onClick: props.onClick,
-        onMove: (arcId, targetId, position) => dispatch(props.onMove(arcId, targetId, position))
+        onMove: (arcId, targetId, position) => dispatch(props.onMove(arcId, targetId, position)),
+        onAddChild: parentId => {
+            dispatch(Arc().action.create({name: "New story arc", parentId}));
+        },
+        onDelete: parentId => {
+            dispatch(Arc().action.delete(parentId));
+        }
     })
 )(ArcTree);
