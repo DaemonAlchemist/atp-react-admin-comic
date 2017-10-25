@@ -34,12 +34,12 @@ export default ({arc, updateArc, updateThumbnail, updateBanner}) =>
                     </Col>
                 </Row>
                 <Row>
-                    <Col xs={12} sm={6} md={3}>
+                    <Col xs={12} sm={6} md={4}>
                         <Panel header={<span><i className="fa fa-picture-o"></i> Thumbnail Image</span>}>
                             <MediaSelector.Image mediaId={arc.thumbnailFileId} onSave={updateThumbnail}/>
                         </Panel>
                     </Col>
-                    <Col xs={12} sm={6} md={9}>
+                    <Col xs={12} sm={6} md={8}>
                         <Panel header={<span><i className="fa fa-picture-o"></i> Banner Image</span>}>
                             <MediaSelector.Image mediaId={arc.bannerFileId} onSave={updateBanner}/>
                         </Panel>
