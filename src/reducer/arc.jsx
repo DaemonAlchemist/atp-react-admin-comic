@@ -4,6 +4,7 @@
 
 import {o} from "atp-sugar";
 import {entityBoilerplate} from "atp-redux-entity";
+import {Page} from './page';
 
 export const arcType = 'comicArc';
 
@@ -13,4 +14,8 @@ export default (state, action) => o(action.type).switch({
 });
 
 //Standard REST entity selectors and actions
-export const Arc = () => entityBoilerplate(arcType, 'arc');
+export const Arc = () => o(entityBoilerplate(arcType, 'arc')).as(arc => o(arc)
+    .merge({
+        pages: arc.children('page', Page)
+    })
+).raw;

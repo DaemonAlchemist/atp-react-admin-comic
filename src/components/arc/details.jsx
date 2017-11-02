@@ -1,9 +1,10 @@
 import React from "react";
 import {InlineEdit} from 'atp-inline-edit';
-import {MediaSelector} from 'atp-media';
+import {MediaSelector, NewMediaForm} from 'atp-media';
 import {Row, Col, Panel} from 'react-bootstrap';
+import PageList from "../../containers/page/list";
 
-export default ({arc, updateArc, updateThumbnail, updateBanner}) =>
+export default ({arc, updateArc, updateThumbnail, updateBanner, onNewPage}) =>
     <div>
         {arc &&
             <div>
@@ -51,9 +52,23 @@ export default ({arc, updateArc, updateThumbnail, updateBanner}) =>
                         </Panel>
                     </Col>
                 </Row>
+                <Row>
+                    <Col xs={12}>
+                        <Panel header={
+                            <div>
+                                <span><i className="fa fa-files-o" /> Pages</span>
+                                <div style={{float: "right"}}>
+                                    <NewMediaForm bsSize="xsmall" showText={true} onUpload={onNewPage}/>
+                                </div>
+                            </div>
+                        }>
+                            <PageList filter={page => page.arcId == arc.id} />
+                        </Panel>
+                    </Col>
+                </Row>
             </div>
         }
         {!arc &&
-            <div>Select an arc...</div>
+            <h1>No arc selected...</h1>
         }
     </div>;
