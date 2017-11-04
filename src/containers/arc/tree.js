@@ -31,7 +31,6 @@ export default connectWithLifecycle(
             }
         },
         onReceiveDrop: ({action, sourceType, sourceId, targetId}) => {
-            console.log(sourceType);
             switch(sourceType) {
                 case arcDragType: dispatch(Arc().action.move(action, targetId, sourceId)); break;
                 //TODO:  Use move action for page moves
