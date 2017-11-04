@@ -6,6 +6,8 @@ import {connectWithLifecycle} from "react-lifecycle-component";
 import ArcTree from "../../components/arc/tree";
 import {Arc} from "../../reducer/arc";
 
+const dragType = 'comic-arc';
+
 export default connectWithLifecycle(
     (state, props) => ({
         arcIds: Arc().select.some(() => state, arc => !arc.parentId).map(arc => arc.id),
@@ -20,9 +22,13 @@ export default connectWithLifecycle(
             dispatch(Arc().action.collection.get({}));
         },
         onClick: props.onClick,
-        onMove: ({dropEffect, sourceId, targetId}) => {
-            console.log("Move story arc " + sourceId + " " + dropEffect + " arc " + targetId);
-            dispatch(Arc().action.move(dropEffect, targetId, sourceId));
+        dragType,
+        onDrop: ({action, sourceType, sourceId, targetId}) => {
+            console.log(sourceType);
+            switch(sourceType) {
+                case dragType: dispatch(Arc().action.move(action, targetId, sourceId)); break;
+                default: throw "Unsupported source type: " + sourceType; break;
+            }
         },
         onAddChild: parentId => {
             dispatch(Arc().action.create({name: "New story arc", parentId}));
