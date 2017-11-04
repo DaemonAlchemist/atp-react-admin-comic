@@ -5,6 +5,7 @@
 import {connectWithLifecycle} from "react-lifecycle-component";
 import ArcTree from "../../components/arc/tree";
 import {Arc} from "../../reducer/arc";
+import {Page} from "../../reducer/page";
 import {pageDragType} from "../page/preview";
 
 const arcDragType = 'comic-arc';
@@ -29,11 +30,12 @@ export default connectWithLifecycle(
                 return true;
             }
         },
-        onDrop: ({action, sourceType, sourceId, targetId}) => {
+        onReceiveDrop: ({action, sourceType, sourceId, targetId}) => {
             console.log(sourceType);
             switch(sourceType) {
                 case arcDragType: dispatch(Arc().action.move(action, targetId, sourceId)); break;
-                case pageDragType: console.log("Page drops not supported yet"); break;
+                //TODO:  Use move action for page moves
+                case pageDragType: dispatch(Page().action.update(sourceId, {arcId: targetId})); break;
                 default: throw "Unsupported source type: " + sourceType; break;
             }
         },
