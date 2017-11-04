@@ -5,10 +5,12 @@
 import {connectWithLifecycle} from 'react-lifecycle-component';
 import PageList from "../../components/page/list";
 import {Page} from "../../reducer/page";
+import {sortBy} from 'atp-pointfree';
 
 export default connectWithLifecycle(
     (state, props) => ({
-        pages: Page().select.some(() => state, props.filter)
+        pages: Page().select.some(() => state, props.filter),
+        sorter: props.sorter || sortBy('sortOrder')
     }),
     (dispatch, props) => ({
         componentDidMount: () => {

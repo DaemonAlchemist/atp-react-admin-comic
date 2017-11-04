@@ -7,7 +7,7 @@ import ArcTree from "../../components/arc/tree";
 import {Arc} from "../../reducer/arc";
 import {Page} from "../../reducer/page";
 import {pageDragType} from "../page/preview";
-
+import {sortBy} from 'atp-pointfree';
 const arcDragType = 'comic-arc';
 
 export default connectWithLifecycle(
@@ -17,7 +17,7 @@ export default connectWithLifecycle(
         getContent: arc => arc.name,
         getId: arc => arc.id,
         getChildren: (state, id) => Arc().select.some(() => state, arc => arc.parentId === id),
-        sorter: (a, b) => a.sortOrder - b.sortOrder
+        sorter: sortBy('sortOrder')
     }),
     (dispatch, props) => ({
         componentDidMount: () => {
@@ -33,8 +33,7 @@ export default connectWithLifecycle(
         onReceiveDrop: ({action, sourceType, sourceId, targetId}) => {
             switch(sourceType) {
                 case arcDragType: dispatch(Arc().action.move(action, targetId, sourceId)); break;
-                //TODO:  Use move action for page moves
-                case pageDragType: dispatch(Page().action.update(sourceId, {arcId: targetId})); break;
+                case pageDragType: dispatch(Page().action.move('into', targetId, sourceId)); break;
                 default: throw "Unsupported source type: " + sourceType; break;
             }
         },
