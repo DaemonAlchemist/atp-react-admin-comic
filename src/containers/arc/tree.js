@@ -6,7 +6,7 @@ import {connectWithLifecycle} from "react-lifecycle-component";
 import ArcTree from "../../components/arc/tree";
 import {Arc} from "../../reducer/arc";
 import {Page} from "../../reducer/page";
-import {pageDragType} from "../page/preview";
+import {pageDragType} from "../../components/page/preview";
 import {sortBy} from 'atp-pointfree';
 const arcDragType = 'comic-arc';
 

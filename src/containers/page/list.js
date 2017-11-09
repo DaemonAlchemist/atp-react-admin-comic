@@ -9,7 +9,7 @@ import {sortBy} from 'atp-pointfree';
 
 export default connectWithLifecycle(
     (state, props) => ({
-        pages: Page().select.some(() => state, props.filter),
+        pages: Page().select.some(() => state, page => page.arcId == props.arcId),
         sorter: props.sorter || sortBy('sortOrder')
     }),
     (dispatch, props) => ({

@@ -61,7 +61,7 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, onNewPage}) =>
                             </div>
                         </div>
                     }>
-                        <PageList filter={page => page.arcId == arc.id} />
+                        <PageList arcId={arc.id} />
                     </Panel>
                 </Col>
             </Row>

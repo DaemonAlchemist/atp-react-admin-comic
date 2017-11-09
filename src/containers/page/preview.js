@@ -5,13 +5,10 @@
 import {connect} from 'react-redux';
 import PagePreview from '../../components/page/preview';
 import {Page} from "../../reducer/page";
-import {dragSource} from 'atp-dnd';
 import {compose} from 'atp-pointfree';
 
-export const pageDragType = 'comic-page';
-
 export default compose(
-    dragSource(pageDragType),
+    //dragSource(pageDragType),
     connect(
         (state, props) => ({
             page: Page().select.one(() => state, props.id)
