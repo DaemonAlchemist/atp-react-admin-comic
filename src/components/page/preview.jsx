@@ -4,7 +4,7 @@ import {Draggable, DropTarget, Active} from 'atp-dnd';
 
 export const pageDragType = 'comic-page';
 
-export default ({page, dragSource}) =>
+export default ({page, onPageMove}) =>
     <div>
         <Draggable type={pageDragType} id={page.id} style={{position: "relative"}}>
             <Image mediaId={page.imageId} />
@@ -12,9 +12,10 @@ export default ({page, dragSource}) =>
                 action="after"
                 accepts={[pageDragType]}
                 id={page.id}
+                onReceiveDrop={onPageMove}
                 style={{
                     position: "absolute",
-                    right: "-40px",
+                    right: "-42px",
                     width: "64px",
                     height: "100%",
                     top: 0,
@@ -22,7 +23,10 @@ export default ({page, dragSource}) =>
                     paddingLeft: "24px"
                 }}
             >
-                <Active><i className="fa fa-arrow-down"/></Active>
+                <Active>
+                    <i className="fa fa-arrow-down" style={{position: "absolute", top: "-10px"}} />
+                    <i className="fa fa-arrow-up" style={{position: "absolute", bottom: "5px"}} />
+                </Active>
             </DropTarget>
             Page {page.id}
         </Draggable>

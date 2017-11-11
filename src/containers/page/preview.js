@@ -14,7 +14,7 @@ export default compose(
             page: Page().select.one(() => state, props.id)
         }),
         (dispatch, props) => ({
-
+            onPageMove: info => {dispatch(Page().action.move(info.action, info.targetId, info.sourceId));}
         })
     )
 )(PagePreview);
