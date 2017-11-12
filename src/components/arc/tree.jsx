@@ -12,7 +12,6 @@ const ArcTree = props =>
                 key={arcId}
                 id={arcId}
                 parentNodeId="arcTree"
-                draggable={props.dragType}
                 {...props}
             />
         )}

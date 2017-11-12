@@ -8,6 +8,7 @@ import {Arc} from "../../reducer/arc";
 import {Page} from "../../reducer/page";
 import {pageDragType} from "../../components/page/preview";
 import {sortBy} from 'atp-pointfree';
+
 const arcDragType = 'comic-arc';
 
 export default connectWithLifecycle(
@@ -24,9 +25,11 @@ export default connectWithLifecycle(
             dispatch(Arc().action.collection.get({}));
         },
         onClick: props.onClick,
-        dragType: arcDragType,
+        draggable: arcDragType,
         accepts: {
-            [pageDragType]: item => {
+            [pageDragType]: true,
+            [arcDragType]: item => {
+                //TODO:  Don't allow dropping into a child
                 return true;
             }
         },
