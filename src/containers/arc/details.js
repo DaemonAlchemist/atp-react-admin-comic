@@ -9,7 +9,7 @@ import {Page} from "../../reducer/page";
 
 export default connect(
     (state, props) => ({
-        arc: Arc().select.one(() => state, props.id)
+        arc: props.id ? Arc().select.one(() => state, props.id) : undefined
     }),
     (dispatch, props) => ({
         updateArc: (data, dispatch) => {dispatch(Arc().action.update(props.id, data));},

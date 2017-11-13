@@ -18,20 +18,18 @@ export default connectWithLifecycle(
         getContent: arc => arc.name,
         getId: arc => arc.id,
         getChildren: (state, id) => Arc().select.some(() => state, arc => arc.parentId === id),
-        sorter: sortBy('sortOrder')
+        sorter: sortBy('sortOrder'),
+        draggable: arcDragType,
+        accepts: {
+            [pageDragType]: true,
+            [arcDragType]: (item, dropTargetProps) => !Arc()
+                .select.lineageIds(() => state, dropTargetProps.id)
+                .includes(item.id)
+        },
     }),
     (dispatch, props) => ({
         componentDidMount: () => {
             dispatch(Arc().action.collection.get({}));
-        },
-        onClick: props.onClick,
-        draggable: arcDragType,
-        accepts: {
-            [pageDragType]: true,
-            [arcDragType]: item => {
-                //TODO:  Don't allow dropping into a child
-                return true;
-            }
         },
         onReceiveDrop: ({action, sourceType, sourceId, targetId}) => {
             switch(sourceType) {
