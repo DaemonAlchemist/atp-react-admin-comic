@@ -7,7 +7,7 @@ export const pageDragType = 'comic-page';
 
 export default ({page, onPageMove}) =>
     <div>
-        <Link to={`/comic/page/${page.id}`}>
+        <Link to={`/comic/page/${page.id}`} label={"Comic Page " + page.id} target="new">
             <Draggable type={pageDragType} id={page.id} style={{position: "relative"}}>
                 <Image mediaId={page.imageId} />
                 <DropTarget
