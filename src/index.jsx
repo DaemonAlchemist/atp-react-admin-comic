@@ -3,13 +3,13 @@
  */
 
 import React from "react";
-import {Row} from "react-bootstrap";
 import {addTab} from "atp-ui";
 import {combineReducers} from 'redux';
 
 import dashboard from "./reducer/dashboard";
 
 import Dashboard from "./containers/dashboard";
+import {Route} from 'react-router';
 
 export default {
     reducers: {
@@ -17,6 +17,9 @@ export default {
             dashboard
         })
     },
+    routes: [
+        <Route path="/comic/page/:pageId" exact render={({match}) => <div>Page {match.params.pageId}</div>} />,
+    ],
     init: {
         ui: {
             menus: {
