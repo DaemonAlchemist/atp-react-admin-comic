@@ -5,6 +5,6 @@ export const PageLink = props =>
     <Link
         {...props}
         to={`/comic/page/${props.page.id}`}
-        title={<span><i className="fa fa-picture" /> {props.page.name}</span>}
+        label={<span><i className="fa fa-picture-o" /> Comic Page "{props.page.name}"</span>}
         target="new"
     />;

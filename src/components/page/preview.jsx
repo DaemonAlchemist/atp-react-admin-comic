@@ -2,12 +2,13 @@ import React from 'react';
 import {Image} from 'atp-media';
 import {Draggable, DropTarget, Active} from 'atp-dnd';
 import {Link} from 'atp-react-tab-router';
+import {PageLink} from "../links";
 
 export const pageDragType = 'comic-page';
 
 export default ({page, onPageMove}) =>
     <div>
-        <Link to={`/comic/page/${page.id}`} label={"Comic Page " + page.id} target="new">
+        <PageLink page={page}>
             <Draggable type={pageDragType} id={page.id} style={{position: "relative"}}>
                 <Image mediaId={page.imageId} />
                 <DropTarget
@@ -32,5 +33,5 @@ export default ({page, onPageMove}) =>
                 </DropTarget>
                 Page {page.id}
             </Draggable>
-        </Link>
+        </PageLink>
     </div>;
