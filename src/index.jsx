@@ -3,13 +3,14 @@
  */
 
 import React from "react";
-import {addTab} from "atp-ui";
 import {combineReducers} from 'redux';
+import {Route} from 'react-router';
+import {Link} from 'atp-react-tab-router';
 
 import dashboard from "./reducer/dashboard";
 
 import Dashboard from "./containers/dashboard";
-import {Route} from 'react-router';
+//import PageDetails from "./containers/page/details";
 
 export default {
     reducers: {
@@ -18,6 +19,7 @@ export default {
         })
     },
     routes: [
+        <Route path="/comic/dashboard" exact render={() => <Dashboard />} />,
         <Route path="/comic/page/:pageId" exact render={({match}) => <div>Page {match.params.pageId}</div>} />,
     ],
     init: {
@@ -29,15 +31,8 @@ export default {
                         sortOrder: 0,
                         children: {
                             dashboard: {
-                                label: <span><i className="fa fa-dashboard"></i> Dashboard</span>,
+                                label: <Link to="/comic/dashboard" label="Comic Dashboard" target="new"><i className="fa fa-dashboard"></i> Dashboard</Link>,
                                 sortOrder: 0,
-                                onClick: dispatch => {
-                                    dispatch(addTab({
-                                        title: <span><i className="fa fa-dashboard" /> Comic Dashboard</span>,
-                                        id: () => 'comic-dashboard',
-                                        controller: () => <Dashboard />
-                                    }));
-                                }
                             }
                         }
                     }
