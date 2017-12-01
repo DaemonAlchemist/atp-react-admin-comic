@@ -8,8 +8,8 @@ export const pageDragType = 'comic-page';
 
 export default ({page, onPageMove}) =>
     <div>
-        <PageLink page={page}>
-            <Draggable type={pageDragType} id={page.id} style={{position: "relative"}}>
+        <Draggable type={pageDragType} id={page.id} style={{position: "relative"}}>
+            <PageLink page={page}>
                 <Image mediaId={page.imageId} />
                 <DropTarget
                     action="after"
@@ -32,6 +32,6 @@ export default ({page, onPageMove}) =>
                     </Active>
                 </DropTarget>
                 Page {page.id}
-            </Draggable>
-        </PageLink>
+            </PageLink>
+        </Draggable>
     </div>;
