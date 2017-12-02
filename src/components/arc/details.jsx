@@ -35,10 +35,10 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, onNewPage}) =>
             </Row>
             <Row>
                 <Col xs={12} sm={6} md={4}>
-                    <MediaSelector.Image title="Thumbnail Image" mediaId={arc.thumbnailFileId} onSave={updateThumbnail}/>
+                    <MediaSelector.Image title="Thumbnail Image" imageId={arc.thumbnailFileId} onSave={updateThumbnail}/>
                 </Col>
                 <Col xs={12} sm={6} md={4}>
-                    <MediaSelector.Image title="Banner Image" mediaId={arc.bannerFileId} onSave={updateBanner}/>
+                    <MediaSelector.Image title="Banner Image" imageId={arc.bannerFileId} onSave={updateBanner}/>
                 </Col>
                 <Col xs={12} sm={12} md={4}>
                     <Panel header={<span><i className="fa fa-file-text-o"></i> Summary</span>}>

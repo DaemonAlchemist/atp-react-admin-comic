@@ -1,7 +1,6 @@
 import React from 'react';
 import {Image} from 'atp-media';
 import {Draggable, DropTarget, Active} from 'atp-dnd';
-import {Link} from 'atp-react-tab-router';
 import {PageLink} from "../links";
 
 export const pageDragType = 'comic-page';
@@ -10,7 +9,7 @@ export default ({page, onPageMove}) =>
     <div>
         <Draggable type={pageDragType} id={page.id} style={{position: "relative"}}>
             <PageLink page={page}>
-                <Image mediaId={page.imageId} />
+                <Image imageId={page.imageId} />
                 <DropTarget
                     action="after"
                     accepts={[pageDragType]}
