@@ -34,6 +34,7 @@ export default ({page, onPageMove, updatePage}) =>
             </PageLink>
             <InlineEdit.Text
                 id="page.name.edit"
+                size="default"
                 value={page.name}
                 label="Name"
                 name="name"
