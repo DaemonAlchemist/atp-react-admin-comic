@@ -2,10 +2,11 @@ import React from 'react';
 import {Image} from 'atp-media';
 import {Draggable, DropTarget, Active} from 'atp-dnd';
 import {PageLink} from "../links";
+import {InlineEdit} from 'atp-inline-edit';
 
 export const pageDragType = 'comic-page';
 
-export default ({page, onPageMove}) =>
+export default ({page, onPageMove, updatePage}) =>
     <div>
         <Draggable type={pageDragType} id={page.id} style={{position: "relative"}}>
             <PageLink page={page}>
@@ -30,7 +31,13 @@ export default ({page, onPageMove}) =>
                         <i className="fa fa-arrow-up" style={{position: "absolute", bottom: "5px"}} />
                     </Active>
                 </DropTarget>
-                Page {page.id}
             </PageLink>
+            <InlineEdit.Text
+                id="page.name.edit"
+                value={page.name}
+                label="Name"
+                name="name"
+                onSave={updatePage}
+            />
         </Draggable>
     </div>;
