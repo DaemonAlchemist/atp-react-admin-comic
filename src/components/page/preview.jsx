@@ -9,7 +9,7 @@ export default ({page, onPageMove}) =>
     <div>
         <Draggable type={pageDragType} id={page.id} style={{position: "relative"}}>
             <PageLink page={page}>
-                <Image imageId={page.imageId} />
+                <Image imageId={page.imageId} width={300} height={300} />
                 <DropTarget
                     action="after"
                     accepts={[pageDragType]}
