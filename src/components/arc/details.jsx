@@ -42,7 +42,8 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, onNewPage}) =>
                 </Col>
                 <Col xs={12} sm={12} md={4}>
                     <Panel header={<span><i className="fa fa-file-text-o"></i> Summary</span>}>
-                        <InlineEdit.Text
+                        <InlineEdit.Textarea
+                            size="small"
                             id="arc.summary.edit"
                             value={arc.summary}
                             name="summary"

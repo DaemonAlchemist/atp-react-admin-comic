@@ -13,5 +13,6 @@ export default connectWithLifecycle(
         },
         updateImage: imageId => {dispatch(Page().action.update(props.pageId, {imageId}));},
         updatePage: (data, dispatch) => {dispatch(Page().action.update(props.pageId, data));},
+        updateEnabled: enabled => {dispatch(Page().action.update(props.pageId, {enabled}))}
     })
 )(PageDetails);
