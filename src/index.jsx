@@ -10,7 +10,7 @@ import {Link} from 'atp-react-tab-router';
 import dashboard from "./reducer/dashboard";
 
 import Dashboard from "./containers/dashboard";
-//import PageDetails from "./containers/page/details";
+import PageDetails from "./containers/page/details";
 
 export default {
     reducers: {
@@ -20,7 +20,7 @@ export default {
     },
     routes: [
         <Route path="/comic/dashboard" exact render={() => <Dashboard />} />,
-        <Route path="/comic/page/:pageId" exact render={({match}) => <div>Page {match.params.pageId}</div>} />,
+        <Route path="/comic/page/:pageId" exact render={({match}) => <PageDetails pageId={match.params.pageId} />} />,
     ],
     init: {
         ui: {
