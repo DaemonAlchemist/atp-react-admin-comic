@@ -18,5 +18,14 @@ export default ({page, updatePage, updateImage}) =>
                     onSave={updatePage}
                 />
             </h1>
+            <h3 style={{marginTop: 0}}>
+                <InlineEdit.Text
+                    id={"page.url.edit" + page.id}
+                    value={page.url}
+                    label="Url"
+                    name="url"
+                    onSave={updatePage}
+                />
+            </h3>
         </Col>
     </Row>;
