@@ -18,12 +18,11 @@ export default ({page, onPageMove, updatePage}) =>
                     onReceiveDrop={onPageMove}
                     style={{
                         position: "absolute",
-                        right: "-42px",
-                        width: "64px",
+                        right: "-15px",
+                        width: "15px",
                         height: "100%",
                         top: 0,
                         zIndex: 999,
-                        paddingLeft: "24px"
                     }}
                 >
                     <Active>
@@ -33,7 +32,7 @@ export default ({page, onPageMove, updatePage}) =>
                 </DropTarget>
             </PageLink>
             <InlineEdit.Text
-                id="page.name.edit"
+                id={"page.name.edit" + page.id}
                 size="default"
                 value={page.name}
                 label="Name"
