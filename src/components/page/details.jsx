@@ -33,11 +33,22 @@ export default ({page, updatePage, updateImage, updateEnabled}) =>
                 </Col>
                 <Col xs={12} sm={6}>
                     <Row>
-                        <Col xs={6}>
-                            0000-00-00
-                        </Col>
-                        <Col xs={6}>
+                        <Col xs={12}>
                             <Toggle enabled={page.enabled} update={updateEnabled}/>
+                        </Col>
+                        <Col xs={12}>
+                            <h4 style={{marginTop: 0}} className="text-right">
+                                {page.enabled
+                                    ? <InlineEdit.Datepicker
+                                        id={"page.date.edit" + page.id}
+                                        value={page.postDate}
+                                        label="Date"
+                                        name="postDate"
+                                        onSave={updatePage}
+                                      />
+                                    : <span>&nbsp;</span>
+                                }
+                            </h4>
                         </Col>
                     </Row>
                 </Col>

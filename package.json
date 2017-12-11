@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "atp-dnd": "^0.6.0",
-    "atp-inline-edit": "^0.4.0",
+    "atp-inline-edit": "^0.5.0",
     "atp-media": "^0.7.0",
     "atp-pointfree": "^0.4.0",
     "atp-react-tab-router": "^0.3.1",
