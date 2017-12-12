@@ -3,6 +3,7 @@ import {MediaSelector} from 'atp-media';
 import {InlineEdit} from 'atp-inline-edit';
 import {Row, Col, Panel, InputGroup, Button} from 'react-bootstrap';
 import {Toggle} from 'atp-ui';
+import CommentaryList from "../../containers/commentary/list";
 
 export default ({page, updatePage, updateImage, updateEnabled}) =>
     <Row>
@@ -54,7 +55,7 @@ export default ({page, updatePage, updateImage, updateEnabled}) =>
                 </Col>
             </Row>
             <Row>
-                <Col xs={12} sm={6}>
+                <Col xs={12}>
                     <Panel header={<span><i className="fa fa-file-text-o"></i> Transcript</span>}>
                         <InlineEdit.Textarea
                             size="small"
@@ -65,6 +66,9 @@ export default ({page, updatePage, updateImage, updateEnabled}) =>
                             onSave={updatePage}
                         />
                     </Panel>
+                </Col>
+                <Col xs={12}>
+                    <CommentaryList pageId={page.id} />
                 </Col>
             </Row>
         </Col>

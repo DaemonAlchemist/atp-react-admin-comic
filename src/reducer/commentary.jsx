@@ -4,9 +4,8 @@
 
 import {o} from "atp-sugar";
 import {entityBoilerplate} from "atp-redux-entity";
-import {Commentary} from './commentary';
 
-export const pageType = 'comicPage';
+export const commentaryType = 'comicCommentary';
 
 //Reducer
 export default (state, action) => o(action.type).switch({
@@ -14,8 +13,4 @@ export default (state, action) => o(action.type).switch({
 });
 
 //Standard REST entity selectors and actions
-export const Page = () => o(entityBoilerplate(pageType, 'page')).as(page => o(page)
-    .merge({
-        commentaries: page.children('commentary', Commentary)
-    }).raw
-);
+export const Commentary = () => entityBoilerplate(commentaryType, 'commentary');
