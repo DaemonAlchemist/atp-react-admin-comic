@@ -2,7 +2,6 @@ import React from 'react';
 import {MediaSelector} from 'atp-media';
 import {InlineEdit} from 'atp-inline-edit';
 import {Row, Col, Panel, InputGroup, Button} from 'react-bootstrap';
-import {Toggle} from 'atp-ui';
 import CommentaryList from "../../containers/commentary/list";
 
 export default ({page, updatePage, updateImage, updateEnabled}) =>
@@ -35,7 +34,7 @@ export default ({page, updatePage, updateImage, updateEnabled}) =>
                 <Col xs={12} sm={6}>
                     <Row>
                         <Col xs={12}>
-                            <Toggle enabled={page.enabled} update={updateEnabled}/>
+                            <InlineEdit.Toggle enabled={page.enabled} update={updateEnabled}/>
                         </Col>
                         <Col xs={12}>
                             <h4 style={{marginTop: 0}} className="text-right">
