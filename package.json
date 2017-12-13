@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "atp-dnd": "^0.6.0",
-    "atp-inline-edit": "^0.5.0",
+    "atp-inline-edit": "^0.6.0",
     "atp-media": "^0.7.0",
     "atp-pointfree": "^0.5.0",
     "atp-react-tab-router": "^0.3.1",
@@ -45,7 +45,7 @@
     "atp-sugar": "^0.8.3",
     "atp-tree": "^0.4.7",
     "atp-uac": "^0.4.0",
-    "atp-ui": "^0.4.0",
+    "atp-ui": "^0.5.0",
     "dependency-check": "^2.9.1",
     "react": "^16.2.0",
     "react-bootstrap": "^0.31.5",
