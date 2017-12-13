@@ -9,6 +9,7 @@ export default connect(
         comments:  Commentary().select.some(get(state), _(equals(props.pageId), prop('pageId')))
     }),
     (dispatch, props) => ({
+        onCommentaryMove: info => {dispatch(Commentary().action.move(info.action, info.targetId, info.sourceId));},
         updateComment: id => data => {dispatch(Commentary().action.update(id, data));}
     })
 )(CommentaryList);
