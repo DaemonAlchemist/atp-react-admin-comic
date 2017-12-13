@@ -9,6 +9,6 @@ export default connect(
         comments:  Commentary().select.some(get(state), _(equals(props.pageId), prop('pageId')))
     }),
     (dispatch, props) => ({
-
+        updateComment: id => data => {dispatch(Commentary().action.update(id, data));}
     })
 )(CommentaryList);
