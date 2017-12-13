@@ -2,7 +2,7 @@
 import React from 'react';
 import {PageLinkFull} from "../links";
 import {UserLinkFull} from "atp-uac";
-import {Panel, Table} from 'react-bootstrap';
+import {Panel, Table, Button} from 'react-bootstrap';
 import {InlineEdit} from 'atp-inline-edit';
 import {Draggable, DropTarget, Active, Inactive} from 'atp-dnd';
 import {sortBy} from 'atp-pointfree';
@@ -32,8 +32,15 @@ const CommentaryDropTarget = ({id, action, onCommentaryMove}) =>
         </Inactive>
     </DropTarget>;
 
-export default ({pageId, comments, updateComment, onCommentaryMove}) =>
-    <Panel  header={<span><i className="fa fa-comment"></i> Commentary</span>}>
+export default ({pageId, userId, comments, onNewComment, onDeleteComment, updateComment, onCommentaryMove}) =>
+    <Panel  header={
+        <div>
+            <i className="fa fa-comment"></i> Commentary
+            <Button bsStyle="primary" bsSize="xsmall" style={{float: "right"}} onClick={onNewComment(pageId, userId)}>
+                <i className="fa fa-plus fa-fw" />
+            </Button>
+        </div>
+    }>
         <Table fill>
             <thead>
             <tr>
@@ -59,7 +66,9 @@ export default ({pageId, comments, updateComment, onCommentaryMove}) =>
                             size="default"
                             rows={3}
                         /></td>
-                        <td className="text-danger"><i className="fa fa-trash" /></td>
+                        <td className="text-danger">
+                            <i className="fa fa-trash" onClick={onDeleteComment(comment.id)}/>
+                        </td>
                     </Draggable>,
                     <CommentaryDropTarget id={comment.id} action="after" onCommentaryMove={onCommentaryMove} />
                 ])}
