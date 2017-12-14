@@ -52,7 +52,7 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
             </tr>
             </thead>
             <tbody>
-                <CommentaryDropTarget id={pageId} action="into" onCommentaryMove={onCommentaryMove} />
+                <CommentaryDropTarget key="beginningDrop" id={pageId} action="into" onCommentaryMove={onCommentaryMove} />
                 {comments.sort(sortBy("sortOrder")).map(comment => [
                     <Draggable type={commentaryDragType} id={comment.id} component="tr" key={comment.id}>
                         <td><i className="fa fa-bars" /></td>
@@ -70,7 +70,7 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
                             <i className="fa fa-trash" onClick={onDeleteComment(comment.id)}/>
                         </td>
                     </Draggable>,
-                    <CommentaryDropTarget id={comment.id} action="after" onCommentaryMove={onCommentaryMove} />
+                    <CommentaryDropTarget key={"afterDrop" + comment.id} id={comment.id} action="after" onCommentaryMove={onCommentaryMove} />
                 ])}
             </tbody>
         </Table>
