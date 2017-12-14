@@ -58,7 +58,7 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
                         <td><i className="fa fa-bars" /></td>
                         <td><UserLinkFull userId={comment.userId} /></td>
                         <td><PageLinkFull pageId={comment.pageId} /></td>
-                        <td><InlineEdit.Textarea
+                        <td><InlineEdit.Wysiwyg
                             id={"commentart.text.edit" + comment.id}
                             value={comment.text}
                             name="text"
