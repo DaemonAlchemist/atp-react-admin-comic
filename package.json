@@ -36,7 +36,7 @@
     "mocha": "^4.0.1"
   },
   "dependencies": {
-    "atp-dnd": "^0.8.1",
+    "atp-dnd": "^0.9.0",
     "atp-inline-edit": "^0.7.1",
     "atp-media": "^0.7.2",
     "atp-pointfree": "^0.5.0",
@@ -44,7 +44,7 @@
     "atp-redux-entity": "^0.2.2",
     "atp-sugar": "^0.8.3",
     "atp-tree": "^0.4.7",
-    "atp-uac": "^0.4.2",
+    "atp-uac": "^0.4.3",
     "atp-ui": "^0.5.1",
     "dependency-check": "^2.9.1",
     "react": "^16.2.0",

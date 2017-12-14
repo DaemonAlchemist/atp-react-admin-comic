@@ -4,7 +4,7 @@ import {PageLinkFull} from "../links";
 import {UserLinkFull} from "atp-uac";
 import {Panel, Table, Button} from 'react-bootstrap';
 import {InlineEdit} from 'atp-inline-edit';
-import {Draggable, DropTarget, Active, Inactive} from 'atp-dnd';
+import {Draggable, DropTarget, Active, Inactive, IsDragging, NotDragging} from 'atp-dnd';
 import {sortBy} from 'atp-pointfree';
 
 export const commentaryDragType = 'comic-commentary';
@@ -54,11 +54,16 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
             <tbody>
                 <CommentaryDropTarget key="beginningDrop" id={pageId} action="into" onCommentaryMove={onCommentaryMove} />
                 {comments.sort(sortBy("sortOrder")).map(comment => [
-                    <Draggable type={commentaryDragType} id={comment.id} component="tr" key={comment.id}>
-                        <td><i className="fa fa-bars" /></td>
+                    <tr key={comment.id}>
+                        <td>
+                            <Draggable type={commentaryDragType} id={comment.id} key={comment.id}>
+                                <NotDragging><i className="fa fa-bars fa-fw" /></NotDragging>
+                                <IsDragging><i className="fa fa-square-o fa-fw" /></IsDragging>
+                            </Draggable>
+                        </td>
                         <td><UserLinkFull userId={comment.userId} /></td>
                         <td><PageLinkFull pageId={comment.pageId} /></td>
-                        <td><InlineEdit.Textarea
+                        <td><InlineEdit.Wysiwyg
                             id={"commentart.text.edit" + comment.id}
                             value={comment.text}
                             name="text"
@@ -69,7 +74,7 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
                         <td className="text-danger">
                             <i className="fa fa-trash" onClick={onDeleteComment(comment.id)}/>
                         </td>
-                    </Draggable>,
+                    </tr>,
                     <CommentaryDropTarget key={"afterDrop" + comment.id} id={comment.id} action="after" onCommentaryMove={onCommentaryMove} />
                 ])}
             </tbody>
