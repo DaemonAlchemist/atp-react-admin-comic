@@ -4,8 +4,8 @@ import {InlineEdit} from 'atp-inline-edit';
 import {Row, Col, Panel, InputGroup, Button} from 'react-bootstrap';
 import CommentaryList from "../../containers/commentary/list";
 
-export default ({page, updatePage, updateImage, updateEnabled}) =>
-    <Row>
+export default ({page, updatePage, updateImage, updateEnabled}) => page
+    ? <Row>
         <Col xs={12} sm={6}>
             <MediaSelector.Image title="Page Image" imageId={page.imageId} onSave={updateImage} width={false} height={false} />
         </Col>
@@ -71,4 +71,5 @@ export default ({page, updatePage, updateImage, updateEnabled}) =>
                 </Col>
             </Row>
         </Col>
-    </Row>;
+    </Row>
+    : <div><i className="fa fa-spinner fa-spin" /> Loading...</div>;
