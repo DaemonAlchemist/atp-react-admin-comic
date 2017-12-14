@@ -19,8 +19,8 @@ export default {
         })
     },
     routes: [
-        <Route path="/comic/dashboard" exact render={() => <Dashboard />} />,
-        <Route path="/comic/page/:pageId" exact render={({match}) => <PageDetails pageId={match.params.pageId} />} />,
+        <Route path="/comic/dashboard" key="/comic/dashboard" exact render={() => <Dashboard />} />,
+        <Route path="/comic/page/:pageId" key="/comic/page/:pageId" exact render={({match}) => <PageDetails pageId={match.params.pageId} />} />,
     ],
     init: {
         ui: {
@@ -32,6 +32,7 @@ export default {
                         children: {
                             dashboard: {
                                 label: <Link to="/comic/dashboard" label="Comic Dashboard" target="new"><i className="fa fa-dashboard"></i> Dashboard</Link>,
+                                noAnchor: true,
                                 sortOrder: 0,
                             }
                         }
