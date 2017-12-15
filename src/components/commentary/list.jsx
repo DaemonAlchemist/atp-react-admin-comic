@@ -46,7 +46,6 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
             <tr>
                 <th></th>
                 <th>Author</th>
-                <th>Page</th>
                 <th>Comment</th>
                 <th></th>
             </tr>
@@ -62,7 +61,6 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
                             </Draggable>
                         </td>
                         <td><UserLinkFull userId={comment.userId} /></td>
-                        <td><PageLinkFull pageId={comment.pageId} /></td>
                         <td><InlineEdit.Wysiwyg
                             id={"commentart.text.edit" + comment.id}
                             value={comment.text}
