@@ -8,6 +8,7 @@ import {Route} from 'react-router';
 import {Link} from 'atp-react-tab-router';
 
 import dashboard from "./reducer/dashboard";
+import characters from "./reducer/characters";
 
 import Dashboard from "./containers/dashboard";
 import Characters from "./containers/characters/dashboard";
@@ -16,7 +17,8 @@ import PageDetails from "./containers/page/details";
 export default {
     reducers: {
         comic: combineReducers({
-            dashboard
+            dashboard,
+            characters
         })
     },
     routes: [
@@ -33,12 +35,26 @@ export default {
                         sortOrder: 0,
                         children: {
                             dashboard: {
-                                label: <Link to="/comic/dashboard" label="Comic Dashboard" target="new"><i className="fa fa-dashboard"></i> Dashboard</Link>,
+                                label: <Link
+                                    to="/comic/dashboard"
+                                    label={<span><i className="fa fa-dashboard" /> Comic Dashboard</span>}
+                                    target="new"
+                                >
+                                    <i className="fa fa-dashboard" /> Dashboard
+                                </Link>,
                                 noAnchor: true,
                                 sortOrder: 0,
                             },
                             characters: {
-                                label: <Link to="/comic/characters" label="Comic Characters" target="new"><i className="fa fa-people"></i> Characters</Link>,
+                                label: <Link
+                                    to="/comic/characters"
+                                    label={<span><i className="fa fa-users" /> Comic Characters</span>}
+                                    target="new"
+                                >
+                                    <i className="fa fa-users" /> Characters
+                                </Link>,
+                                noAnchor: true,
+                                sortOrder: 1
                             }
                         }
                     }
