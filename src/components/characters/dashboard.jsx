@@ -4,33 +4,10 @@ import {Row, Col, ListGroup, ListGroupItem} from "react-bootstrap";
 import {sortBy} from 'atp-pointfree';
 import NewCharacterForm from "../../containers/characters/create";
 import CharacterDetails from "../../containers/characters/details";
-
 import {o} from 'atp-sugar';
-import {Draggable, DropTarget, Active, Inactive, IsDragging, NotDragging} from 'atp-dnd';
+import {Draggable, DropTargets} from 'atp-dnd';
 
 export const characterDragType = 'comic-character';
-
-const CharacterDropTarget = ({id, action, onCharacterMove}) =>
-    <DropTarget
-        action={action}
-        style={{position: "relative", width: "100%"}}
-        accepts={[characterDragType]}
-        id={id}
-        onReceiveDrop={onCharacterMove}
-    >
-        <Active>
-            <div style={{border: "dashed 1px"}}>&nbsp;</div>
-        </Active>
-        <Inactive>
-            <div style={{
-                height: "7px",
-                position: "absolute",
-                width: "100%",
-                zIndex: 999,
-                background: "transparent"
-            }}/>
-        </Inactive>
-    </DropTarget>;
 
 export default ({characters, selectedCharacterId, isSelected, onCharacterMove, onClickCharacter}) =>
     <Row>
@@ -40,24 +17,19 @@ export default ({characters, selectedCharacterId, isSelected, onCharacterMove, o
                 <ListGroupItem>
                     <NewCharacterForm/>
                 </ListGroupItem>
-                <CharacterDropTarget key="insetBeforeDropTarget" id={null} action="into" onCharacterMove={onCharacterMove} />
+                <DropTargets.ListGroupItem accepts={[characterDragType]} key="insetBeforeDropTarget" id={null} action="into" onMove={onCharacterMove} />
                 {o(characters).values().sort(sortBy('sortOrder')).map(character => [
-                    <ListGroupItem
-                        onClick={onClickCharacter(character.id)}
-                        key={character.id}
-                        className={isSelected(character) ? "active" : ""}
-                    >
-                        <Draggable type={characterDragType} id={character.id} key={character.id}>
-                            <span>
-                                <i className="fa fa-bars" /> {character.name}
-                            </span>
+                    <ListGroupItem key={character.id} className={isSelected(character) ? "active" : ""}>
+                        <Draggable onClick={onClickCharacter(character.id)} type={characterDragType} id={character.id} key={character.id}>
+                            <i className="fa fa-bars" /> {character.name}
                         </Draggable>
                     </ListGroupItem>,
-                    <CharacterDropTarget
+                    <DropTargets.ListGroupItem
                         key={"characterDropTarget" + character.id}
                         id={character.id}
+                        accepts={[characterDragType]}
                         action="after"
-                        onCharacterMove={onCharacterMove}
+                        onMove={onCharacterMove}
                     />
                 ])}
             </ListGroup>

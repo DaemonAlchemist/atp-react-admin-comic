@@ -1,36 +1,12 @@
 
 import React from 'react';
-import {PageLinkFull} from "../links";
 import {UserLinkFull} from "atp-uac";
 import {Panel, Table, Button} from 'react-bootstrap';
 import {InlineEdit} from 'atp-inline-edit';
-import {Draggable, DropTarget, Active, Inactive, IsDragging, NotDragging} from 'atp-dnd';
+import {Draggable, DropTarget, DropTargets, Active, Inactive, IsDragging, NotDragging} from 'atp-dnd';
 import {sortBy} from 'atp-pointfree';
 
 export const commentaryDragType = 'comic-commentary';
-
-const CommentaryDropTarget = ({id, action, onCommentaryMove}) =>
-    <DropTarget
-        component="tr"
-        style={{position: "relative"}}
-        action={action}
-        accepts={[commentaryDragType]}
-        id={id}
-        onReceiveDrop={onCommentaryMove}
-    >
-        <Active>
-            <td colSpan="5"><div style={{border: "dashed 1px"}}>&nbsp;</div></td>
-        </Active>
-        <Inactive>
-            <td colSpan="5" style={{
-                height: "7px",
-                position: "absolute",
-                width: "100%",
-                zIndex: 999,
-                background: "transparent"
-            }}/>
-        </Inactive>
-    </DropTarget>;
 
 export default ({pageId, userId, comments, onNewComment, onDeleteComment, updateComment, onCommentaryMove}) =>
     <Panel  header={
@@ -51,7 +27,7 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
             </tr>
             </thead>
             <tbody>
-                <CommentaryDropTarget key="beginningDrop" id={pageId} action="into" onCommentaryMove={onCommentaryMove} />
+                <DropTargets.TableRow key="beginningDrop" id={pageId} accepts={[commentaryDragType]} action="into" onMove={onCommentaryMove} />
                 {comments.sort(sortBy("sortOrder")).map(comment => [
                     <tr key={comment.id}>
                         <td>
@@ -73,7 +49,7 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
                             <i className="fa fa-trash" onClick={onDeleteComment(comment.id)}/>
                         </td>
                     </tr>,
-                    <CommentaryDropTarget key={"afterDrop" + comment.id} id={comment.id} action="after" onCommentaryMove={onCommentaryMove} />
+                    <DropTargets.TableRow key={"afterDrop" + comment.id} id={comment.id} accepts={[commentaryDragType]} action="after" onMove={onCommentaryMove} />
                 ])}
             </tbody>
         </Table>

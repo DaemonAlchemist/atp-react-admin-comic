@@ -1,10 +1,11 @@
 
 import React from 'react';
-import {Row, Col, Panel} from 'react-bootstrap';
+import {Row, Col, Panel, Table} from 'react-bootstrap';
 import {InlineEdit} from 'atp-inline-edit';
 import {MediaSelector} from 'atp-media';
+import AttributeList from "../../containers/characters/attribute-list";
 
-export default ({character, updateCharacter, updateImage}) =>
+export default ({character, attributes, updateCharacter, updateAttribute, updateImage}) =>
     <div>
         {character
             ? <Row>
@@ -20,15 +21,16 @@ export default ({character, updateCharacter, updateImage}) =>
                     </h1>
                 </Col>
                 <Col xs={12} sm={6}>
-                    <Panel header={character.name + "'s Bio"}>
+                    <Panel header={<span><i className="fa fa-id-card" /> {character.name}'s Bio</span>}>
                         <InlineEdit.Wysiwyg
                             id={"character.bio.edit" + character.id}
                             value={character.bio}
-                            label="Bio"
                             name="bio"
                             onSave={updateCharacter}
+                            size="small"
                         />
                     </Panel>
+                    <AttributeList character={character} />
                 </Col>
                 <Col xs={12} sm={6}>
                     <MediaSelector.Image
