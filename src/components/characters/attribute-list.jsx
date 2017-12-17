@@ -68,6 +68,7 @@ export default ({character, attributes, updateAttribute, onAttributeMove, newAtt
                         onMove={onAttributeMove}
                     />
                 ])}
+                {o(attributes).values().length === 0 && <tr><td></td><td colSpan={10}><em>No attributes created</em></td></tr>}
             </tbody>
         </Table>
     </Panel>;

@@ -10,7 +10,7 @@ export default connectWithLifecycle(
     }),
     (dispatch, props) => ({
         componentDidMount: () => {
-            dispatch(Attribute().action.collection.get({characterId: props.character.id}));
+            dispatch(Attribute().action.collection.get({}));
         },
         newAttribute: () => {dispatch(Attribute().action.create({characterId: props.character.id}));},
         deleteAttribute: attributeId => () => {dispatch(Attribute().action.delete(attributeId));},
