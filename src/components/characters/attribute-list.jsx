@@ -8,7 +8,7 @@ import {Draggable, DropTargets, NotDragging, IsDragging} from 'atp-dnd';
 
 export const attributeDragType = 'comic-attribute';
 
-export default ({character, attributes, updateAttribute, onAttributeMove, newAttribute}) =>
+export default ({character, attributes, updateAttribute, onAttributeMove, newAttribute, deleteAttribute}) =>
     <Panel header={
         <span>
             <i className="fa fa-list" /> {character.name}'s Attributes
@@ -20,10 +20,10 @@ export default ({character, attributes, updateAttribute, onAttributeMove, newAtt
         <Table fill>
             <thead>
             <tr>
-                <th></th>
+                <th style={{width: "20px"}}></th>
                 <th>Name</th>
                 <th>Value</th>
-                <th></th>
+                <th style={{width: "20px"}}></th>
             </tr>
             </thead>
             <tbody>
@@ -57,7 +57,7 @@ export default ({character, attributes, updateAttribute, onAttributeMove, newAtt
                             />
                         </td>
                         <td className="text-danger">
-                            <i className="fa fa-trash" />
+                            <i className="fa fa-trash" onClick={deleteAttribute(att.id)} />
                         </td>
                     </tr>,
                     <DropTargets.TableRow

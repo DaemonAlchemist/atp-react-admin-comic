@@ -13,6 +13,7 @@ export default connectWithLifecycle(
             dispatch(Attribute().action.collection.get({characterId: props.character.id}));
         },
         newAttribute: () => {dispatch(Attribute().action.create({characterId: props.character.id}));},
+        deleteAttribute: attributeId => () => {dispatch(Attribute().action.delete(attributeId));},
         updateAttribute: attributeId => (data, dispatch) => {dispatch(Attribute().action.update(attributeId, data));},
         onAttributeMove: info => {dispatch(Attribute().action.move(info.action, info.targetId, info.sourceId));},
     })
