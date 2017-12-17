@@ -2,14 +2,21 @@
 import React from 'react';
 import {o} from 'atp-sugar';
 import {sortBy} from 'atp-pointfree';
-import {Panel, Table} from 'react-bootstrap';
+import {Panel, Table, Button} from 'react-bootstrap';
 import {InlineEdit} from 'atp-inline-edit';
 import {Draggable, DropTargets, NotDragging, IsDragging} from 'atp-dnd';
 
 export const attributeDragType = 'comic-attribute';
 
-export default ({character, attributes, updateAttribute, onAttributeMove}) =>
-    <Panel header={<span><i className="fa fa-list" /> {character.name}'s Attributes</span>}>
+export default ({character, attributes, updateAttribute, onAttributeMove, newAttribute}) =>
+    <Panel header={
+        <span>
+            <i className="fa fa-list" /> {character.name}'s Attributes
+            <Button onClick={newAttribute} bsStyle="primary" bsSize="xsmall" style={{float: "right"}}>
+                <i className="fa fa-plus fa-fw" />
+            </Button>
+        </span>
+    }>
         <Table fill>
             <thead>
             <tr>
