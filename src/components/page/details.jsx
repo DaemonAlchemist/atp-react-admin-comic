@@ -5,8 +5,12 @@ import {Row, Col, Panel, InputGroup, Button} from 'react-bootstrap';
 import CommentaryList from "../../containers/commentary/list";
 import config from 'atp-config';
 import {ArcLinkFull} from '../links';
+import {Assigner} from 'atp-ui';
 
-export default ({page, updatePage, updateImage, updateEnabled}) => page
+export default ({
+    page, updatePage, updateImage, updateEnabled,
+    allCharacters, pageCharacters, onAddCharacter, onRemoveCharacter
+}) => page
     ? <div>
         <Row>
             <Col xs={12} sm={6}>
@@ -40,12 +44,12 @@ export default ({page, updatePage, updateImage, updateEnabled}) => page
                         <h4 style={{marginTop: 0}} className="text-right">
                             {page.enabled
                                 ? <InlineEdit.Datepicker
-                                id={"page.date.edit" + page.id}
-                                value={page.postDate}
-                                label="Date"
-                                name="postDate"
-                                onSave={updatePage}
-                            />
+                                    id={"page.date.edit" + page.id}
+                                    value={page.postDate}
+                                    label="Date"
+                                    name="postDate"
+                                    onSave={updatePage}
+                                  />
                                 : <span>&nbsp;</span>
                             }
                         </h4>
@@ -59,7 +63,7 @@ export default ({page, updatePage, updateImage, updateEnabled}) => page
             </Col>
             <Col xs={12} sm={8}>
                 <Row>
-                    <Col xs={12}>
+                    <Col xs={12} sm={6}>
                         <Panel header={<span><i className="fa fa-file-text-o"></i> Transcript</span>}>
                             <InlineEdit.Wysiwyg
                                 size="small"
@@ -70,6 +74,19 @@ export default ({page, updatePage, updateImage, updateEnabled}) => page
                                 onSave={updatePage}
                             />
                         </Panel>
+                    </Col>
+                    <Col xs={12} sm={6}>
+                        <Assigner
+                            icon="fa fa-users"
+                            label="Characters"
+                            assignedLabel="Characters on this page"
+                            formId="pageCharacterAssigner"
+                            minHeight="100px"
+                            available={allCharacters}
+                            assigned={pageCharacters}
+                            onAssign={onAddCharacter}
+                            onUnassign={onRemoveCharacter}
+                        />
                     </Col>
                     <Col xs={12}>
                         <CommentaryList pageId={page.id} />

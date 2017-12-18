@@ -5,6 +5,7 @@
 import {o} from "atp-sugar";
 import {entityBoilerplate} from "atp-redux-entity";
 import {Commentary} from './commentary';
+import {Character} from "./characters";
 
 export const pageType = 'comicPage';
 
@@ -16,6 +17,7 @@ export default (state, action) => o(action.type).switch({
 //Standard REST entity selectors and actions
 export const Page = () => o(entityBoilerplate(pageType, 'page')).as(page => o(page)
     .merge({
-        commentaries: page.children('commentary', Commentary)
+        commentaries: page.children('commentary', Commentary),
+        characters: page.children('character', Character)
     }).raw
 );
