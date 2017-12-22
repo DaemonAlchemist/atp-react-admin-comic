@@ -6,6 +6,7 @@ import NewCharacterForm from "../../containers/characters/create";
 import CharacterDetails from "../../containers/characters/details";
 import {o} from 'atp-sugar';
 import {Draggable, DropTargets} from 'atp-dnd';
+import {Icon} from 'react-font-awesome-5';
 
 export const characterDragType = 'comic-character';
 
@@ -21,7 +22,7 @@ export default ({characters, selectedCharacterId, isSelected, onCharacterMove, o
                 {o(characters).values().sort(sortBy('sortOrder')).map(character => [
                     <ListGroupItem key={character.id} className={isSelected(character) ? "active" : ""}>
                         <Draggable onClick={onClickCharacter(character.id)} type={characterDragType} id={character.id} key={character.id}>
-                            <i className="fa fa-bars" /> {character.name}
+                            <Icon.Bars /> {character.name}
                         </Draggable>
                     </ListGroupItem>,
                     <DropTargets.ListGroupItem
@@ -33,7 +34,7 @@ export default ({characters, selectedCharacterId, isSelected, onCharacterMove, o
                     />
                 ])}
             </ListGroup>
-                : <span><i className="fa fa-spinner fa-spin"/> Loading...</span>
+                : <span><Icon.Spinner spin /> Loading...</span>
             }
         </Col>
         <Col xs={6} sm={8} md={9}>

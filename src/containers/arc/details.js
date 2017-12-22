@@ -1,6 +1,3 @@
-/**
- * Created by Andrea on 10/23/2017.
- */
 
 import {connect} from "react-redux";
 import ArcDetails from "../../components/arc/details";

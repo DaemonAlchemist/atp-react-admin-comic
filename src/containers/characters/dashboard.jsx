@@ -1,6 +1,4 @@
-/**
- * Created by Andrea on 10/24/2017.
- */
+
 import React from "react";
 import {connectWithLifecycle} from "react-lifecycle-component";
 import {selectedCharacterId, selectCharacter} from "../../reducer/characters";

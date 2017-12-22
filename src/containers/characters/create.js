@@ -1,6 +1,3 @@
-/**
- * Created by Andy on 4/21/2017.
- */
 
 import {reduxForm} from "redux-form";
 import {Character} from "../../reducer/characters";

@@ -1,6 +1,3 @@
-/**
- * Created by Andy on 3/18/2017.
- */
 
 import React from "react";
 import {combineReducers} from 'redux';
@@ -13,6 +10,7 @@ import characters from "./reducer/characters";
 import Dashboard from "./containers/dashboard";
 import Characters from "./containers/characters/dashboard";
 import PageDetails from "./containers/page/details";
+import {Icon} from 'react-font-awesome-5';
 
 export default {
     reducers: {
@@ -31,16 +29,16 @@ export default {
             menus: {
                 main: {
                     comic: {
-                        label: <span><i className="fa fa-picture-o"></i> Comics</span>,
+                        label: <span><Icon.Image /> Comics</span>,
                         sortOrder: 0,
                         children: {
                             dashboard: {
                                 label: <Link
                                     to="/comic/dashboard"
-                                    label={<span><i className="fa fa-dashboard" /> Comic Dashboard</span>}
+                                    label={<span><Icon.Desktop /> Comic Dashboard</span>}
                                     target="new"
                                 >
-                                    <i className="fa fa-dashboard" /> Dashboard
+                                    <Icon.Desktop /> Dashboard
                                 </Link>,
                                 noAnchor: true,
                                 sortOrder: 0,
@@ -48,10 +46,10 @@ export default {
                             characters: {
                                 label: <Link
                                     to="/comic/characters"
-                                    label={<span><i className="fa fa-users" /> Comic Characters</span>}
+                                    label={<span><Icon.Users /> Comic Characters</span>}
                                     target="new"
                                 >
-                                    <i className="fa fa-users" /> Characters
+                                    <Icon.Users /> Characters
                                 </Link>,
                                 noAnchor: true,
                                 sortOrder: 1

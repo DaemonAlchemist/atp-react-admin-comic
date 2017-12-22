@@ -5,12 +5,13 @@ import {Link} from 'atp-react-tab-router';
 import {Page} from "../reducer/page";
 import {Arc} from "../reducer/arc";
 import {get} from 'atp-pointfree';
+import {Icon} from 'react-font-awesome-5';
 
 export const PageLink = props =>
     <Link
         {...props}
         to={`/comic/page/${props.page.id}`}
-        label={<span><i className="fa fa-picture-o" /> Comic Page "{props.page.name}"</span>}
+        label={<span><Icon.Image /> Comic Page "{props.page.name}"</span>}
         target="new"
     />;
 
@@ -21,7 +22,7 @@ export const PageLinkFull = connect(
 )(({page}) =>
     <PageLink page={page}>
         <span  style={{whiteSpace: "nowrap"}}>
-            <i className="fa fa-picture-o"/> {page.name}
+            <Icon.Image /> {page.name}
         </span>
     </PageLink>
 );
@@ -42,8 +43,8 @@ export const ArcLinkFull = connectWithLifecycle(
 )(({arc, showIcon}) => arc
     ? <ArcLink arc={arc}>
         <span  style={{whiteSpace: "nowrap"}}>
-            {showIcon && <i className="fa fa-sitemap"/> }{arc.name}
+            {showIcon && <Icon.Sitemap /> }{arc.name}
         </span>
       </ArcLink>
-    : <span><i className="fa fa-spinner fa-spin" /> Loading...</span>
+    : <span><Icon.Spinner spin /> Loading...</span>
 );

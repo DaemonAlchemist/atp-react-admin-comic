@@ -1,6 +1,3 @@
-/**
- * Created by Andy on 4/30/2017.
- */
 
 import {connectWithLifecycle} from "react-lifecycle-component";
 import ArcTree from "../../components/arc/tree";

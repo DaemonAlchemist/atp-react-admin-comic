@@ -5,15 +5,16 @@ import {sortBy} from 'atp-pointfree';
 import {Panel, Table, Button} from 'react-bootstrap';
 import {InlineEdit} from 'atp-inline-edit';
 import {Draggable, DropTargets, NotDragging, IsDragging} from 'atp-dnd';
+import {Icon} from 'react-font-awesome-5';
 
 export const attributeDragType = 'comic-attribute';
 
 export default ({character, attributes, updateAttribute, onAttributeMove, newAttribute, deleteAttribute}) =>
     <Panel header={
         <span>
-            <i className="fa fa-list" /> {character.name}'s Attributes
+            <Icon.List /> {character.name}'s Attributes
             <Button onClick={newAttribute} bsStyle="primary" bsSize="xsmall" style={{float: "right"}}>
-                <i className="fa fa-plus fa-fw" />
+                <Icon.Plus fixedWidth />
             </Button>
         </span>
     }>
@@ -32,8 +33,8 @@ export default ({character, attributes, updateAttribute, onAttributeMove, newAtt
                     <tr key={att.id}>
                         <td>
                             <Draggable type={attributeDragType} id={att.id} key={att.id}>
-                                <NotDragging><i className="fa fa-bars fa-fw" /></NotDragging>
-                                <IsDragging><i className="fa fa-square-o fa-fw" /></IsDragging>
+                                <NotDragging><Icon.Bars fixedWidth /></NotDragging>
+                                <IsDragging><Icon.Square.regular fixedWidth /></IsDragging>
                             </Draggable>
                         </td>
                         <td>
@@ -57,7 +58,7 @@ export default ({character, attributes, updateAttribute, onAttributeMove, newAtt
                             />
                         </td>
                         <td className="text-danger">
-                            <i className="fa fa-trash" onClick={deleteAttribute(att.id)} />
+                            <Icon.Trash onClick={deleteAttribute(att.id)} />
                         </td>
                     </tr>,
                     <DropTargets.TableRow

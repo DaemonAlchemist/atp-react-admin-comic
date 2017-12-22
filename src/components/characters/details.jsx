@@ -4,6 +4,7 @@ import {Row, Col, Panel, Table} from 'react-bootstrap';
 import {InlineEdit} from 'atp-inline-edit';
 import {MediaSelector} from 'atp-media';
 import AttributeList from "../../containers/characters/attribute-list";
+import {Icon} from 'react-font-awesome-5';
 
 export default ({character, attributes, updateCharacter, updateAttribute, updateImage}) =>
     <div>
@@ -21,7 +22,7 @@ export default ({character, attributes, updateCharacter, updateAttribute, update
                     </h1>
                 </Col>
                 <Col xs={12} sm={6}>
-                    <Panel header={<span><i className="fa fa-id-card" /> {character.name}'s Bio</span>}>
+                    <Panel header={<span><Icon.IdCard /> {character.name}'s Biography</span>}>
                         <InlineEdit.Wysiwyg
                             id={"character.bio.edit" + character.id}
                             value={character.bio}
@@ -34,7 +35,7 @@ export default ({character, attributes, updateCharacter, updateAttribute, update
                 </Col>
                 <Col xs={12} sm={6}>
                     <MediaSelector.Image
-                        title="Character Image"
+                        title={character.name + "'s Image"}
                         imageId={character.imageId}
                         onSave={updateImage}
                         width={false}
@@ -42,6 +43,6 @@ export default ({character, attributes, updateCharacter, updateAttribute, update
                     />
                 </Col>
               </Row>
-            : <Col xs={12}><i className="fa fa-spinner fa-spin"/> Loading...</Col>
+            : <Col xs={12}><Icon.Spinner spin /> Loading...</Col>
         }
     </div>;

@@ -1,6 +1,3 @@
-/**
- * Created by Andy on 4/18/2017.
- */
 
 import React from 'react';
 import {Row, Col} from 'react-bootstrap';

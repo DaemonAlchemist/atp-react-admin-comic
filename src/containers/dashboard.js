@@ -1,6 +1,4 @@
-/**
- * Created by Andrea on 10/24/2017.
- */
+
 import React from "react";
 import {connect} from "react-redux";
 import {selectedArcId, selectArc} from "../reducer/dashboard";

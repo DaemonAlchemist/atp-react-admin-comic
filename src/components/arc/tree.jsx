@@ -1,6 +1,3 @@
-/**
- * Created by Andy on 4/30/2017.
- */
 
 import React from "react";
 import {TreeNode} from 'atp-tree';

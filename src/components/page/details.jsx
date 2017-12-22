@@ -6,6 +6,7 @@ import CommentaryList from "../../containers/commentary/list";
 import config from 'atp-config';
 import {ArcLinkFull} from '../links';
 import {Assigner} from 'atp-ui';
+import {Icon} from 'react-font-awesome-5';
 
 export default ({
     page, updatePage, updateImage, updateEnabled,
@@ -64,7 +65,7 @@ export default ({
             <Col xs={12} sm={8}>
                 <Row>
                     <Col xs={12} sm={6}>
-                        <Panel header={<span><i className="fa fa-file-text-o"></i> Transcript</span>}>
+                        <Panel header={<span><Icon.FileAlt /> Transcript</span>}>
                             <InlineEdit.Wysiwyg
                                 size="small"
                                 id={"page.summary.edit" + page.id}
@@ -77,7 +78,7 @@ export default ({
                     </Col>
                     <Col xs={12} sm={6}>
                         <Assigner
-                            icon="fa fa-users"
+                            Icon={Icon.Users}
                             label="Characters"
                             assignedLabel="Characters on this page"
                             formId="pageCharacterAssigner"
@@ -95,4 +96,4 @@ export default ({
             </Col>
         </Row>
       </div>
-    : <div><i className="fa fa-spinner fa-spin" /> Loading...</div>;
+    : <div><Icon.Spinner spin /> Loading...</div>;

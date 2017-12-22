@@ -4,6 +4,7 @@ import {MediaSelector, NewMediaForm} from 'atp-media';
 import {Row, Col, Panel} from 'react-bootstrap';
 import PageList from "../../containers/page/list";
 import config from 'atp-config';
+import {Icon} from 'react-font-awesome-5';
 
 export default ({arc, updateArc, updateThumbnail, updateBanner, onNewPage}) =>
     arc
@@ -37,7 +38,7 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, onNewPage}) =>
             </Row>
             <Row>
                 <Col xs={12} sm={12} md={8}>
-                    <Panel header={<span><i className="fa fa-file-text-o"></i> Summary</span>}>
+                    <Panel header={<span><Icon.FileAlt /> Summary</span>}>
                         <InlineEdit.Wysiwyg
                             size="small"
                             id="arc.summary.edit"
@@ -48,7 +49,7 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, onNewPage}) =>
                     </Panel>
                     <Panel header={
                         <div>
-                            <span><i className="fa fa-files-o" /> Pages</span>
+                            <span><Icon.Image stack /> Pages</span>
                             <div style={{float: "right"}}>
                                 <NewMediaForm bsSize="xsmall" showText={true} onUpload={onNewPage}/>
                             </div>
