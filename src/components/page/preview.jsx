@@ -5,10 +5,11 @@ import {PageLink} from "../links";
 import {InlineEdit} from 'atp-inline-edit';
 import {Icon} from 'react-font-awesome-5';
 import {Panel} from 'react-bootstrap';
+import {DeleteButton} from 'atp-ui';
 
 export const pageDragType = 'comic-page';
 
-export default ({page, onPageMove, updatePage}) =>
+export default ({page, onPageMove, updatePage, onPageDelete}) =>
     <Panel footer={
         <InlineEdit.Text
             id={"page.name.edit" + page.id}
@@ -19,6 +20,7 @@ export default ({page, onPageMove, updatePage}) =>
             onSave={updatePage}
         />
     } style={{position: "relative"}}>
+        <DeleteButton onClick={onPageDelete} />
         <Draggable type={pageDragType} id={page.id}>
             <PageLink page={page}>
                 <Image imageId={page.imageId} width={300} height={300} />

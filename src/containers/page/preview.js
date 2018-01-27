@@ -9,6 +9,7 @@ export default connect(
     }),
     (dispatch, props) => ({
         onPageMove: info => {dispatch(Page().action.move(info.action, info.targetId, info.sourceId));},
+        onPageDelete: () => {dispatch(Page().action.delete(props.id));},
         updatePage: (data, dispatch) => {dispatch(Page().action.update(props.id, data));},
     })
 )(PagePreview);
