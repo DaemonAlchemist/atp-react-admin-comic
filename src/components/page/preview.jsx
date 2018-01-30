@@ -6,19 +6,28 @@ import {InlineEdit} from 'atp-inline-edit';
 import {Icon} from 'react-font-awesome-5';
 import {Panel} from 'react-bootstrap';
 import {DeleteButton} from 'atp-ui';
+import moment from "moment";
 
 export const pageDragType = 'comic-page';
 
 export default ({page, onPageMove, updatePage, onPageDelete}) =>
     <Panel footer={
-        <InlineEdit.Text
-            id={"page.name.edit" + page.id}
-            size="default"
-            value={page.name}
-            label="Name"
-            name="name"
-            onSave={updatePage}
-        />
+        <div>
+            <InlineEdit.Text
+                id={"page.name.edit" + page.id}
+                size="default"
+                value={page.name}
+                label="Name"
+                name="name"
+                onSave={updatePage}
+            />
+            <div style={{float: "right"}}>
+                {page.enabled
+                    ? <span class="text-success">{moment(page.postDate).format("MMM D, Y")}</span>
+                    : <span class="text-danger">Disabled</span>
+                }
+            </div>
+        </div>
     } style={{position: "relative"}}>
         <DeleteButton onClick={onPageDelete} />
         <Draggable type={pageDragType} id={page.id}>

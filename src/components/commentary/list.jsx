@@ -14,7 +14,7 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
         <div>
             <Icon.Comment /> Commentary
             <Button bsStyle="primary" bsSize="xsmall" style={{float: "right"}} onClick={onNewComment(pageId, userId)}>
-                <Icon.Plus fixedWidth />
+                <Icon.Plus fixedWidth /> Add new commentary
             </Button>
         </div>
     }>
@@ -23,6 +23,7 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
             <tr>
                 <th></th>
                 <th>Author</th>
+                <th>Title</th>
                 <th>Comment</th>
                 <th></th>
             </tr>
@@ -38,6 +39,13 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
                             </Draggable>
                         </td>
                         <td><UserLinkFull userId={comment.userId} /></td>
+                        <td><InlineEdit.Text
+                            id={"commentary.title.edit" + comment.id}
+                            value={comment.title}
+                            name="title"
+                            onSave={updateComment(comment.id)}
+                            size="default"
+                        /></td>
                         <td><InlineEdit.Wysiwyg
                             id={"commentart.text.edit" + comment.id}
                             value={comment.text}

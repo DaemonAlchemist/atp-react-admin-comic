@@ -17,6 +17,7 @@ export default connectWithLifecycle(
     (dispatch, props) => ({
         componentDidMount: () => {
             dispatch(Page().action.fetch(props.pageId));
+            dispatch(Page().characters.action.list(props.pageId, {}));
             dispatch(Commentary().action.collection.get({pageId: props.pageId}));
             dispatch(Character().action.collection.get({}));
         },
