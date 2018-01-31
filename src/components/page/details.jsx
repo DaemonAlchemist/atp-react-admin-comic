@@ -82,7 +82,7 @@ export default ({
                             label="Characters"
                             assignedLabel="Characters on this page"
                             formId="pageCharacterAssigner"
-                            minHeight="100px"
+                            minHeight="300px"
                             available={allCharacters}
                             assigned={pageCharacters}
                             onAssign={onAddCharacter}

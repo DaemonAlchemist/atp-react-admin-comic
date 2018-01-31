@@ -47,14 +47,24 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, onNewPage}) =>
                             onSave={updateArc}
                         />
                     </Panel>
-                    <Panel header={
-                        <div>
-                            <span><Icon.Image stack /> Pages</span>
-                            <div style={{float: "right"}}>
-                                <NewMediaForm bsSize="xsmall" showText={true} onUpload={onNewPage}/>
+                    <Panel
+                        header={
+                            <div>
+                                <span><Icon.Image stack/> Pages</span>
+                                <div style={{float: "right"}}>
+                                    <NewMediaForm bsSize="xsmall" showText={true} onUpload={onNewPage}/>
+                                </div>
                             </div>
-                        </div>
-                    }>
+                        }
+                        footer={
+                            <div>
+                                <span>&nbsp;</span>
+                                <div style={{float: "right"}}>
+                                    <NewMediaForm bsSize="xsmall" showText={true} onUpload={onNewPage}/>
+                                </div>
+                            </div>
+                        }
+                    >
                         <PageList xs={6} sm={4} md={4} arcId={arc.id} />
                     </Panel>
                 </Col>

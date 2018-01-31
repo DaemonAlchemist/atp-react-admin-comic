@@ -15,6 +15,7 @@ export default connect(
         onNewPage: data => {
             dispatch(Page().action.create({
                 arcId: props.id,
+                name: data.results.fileName,
                 imageId: data.results.id
             }));
         }
