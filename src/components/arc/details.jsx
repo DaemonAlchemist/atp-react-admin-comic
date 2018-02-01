@@ -38,34 +38,34 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, onNewPage}) =>
             </Row>
             <Row>
                 <Col xs={12} sm={12} md={8}>
-                    <Panel header={<span><Icon.FileAlt /> Summary</span>}>
-                        <InlineEdit.Wysiwyg
-                            size="small"
-                            id="arc.summary.edit"
-                            value={arc.summary}
-                            name="summary"
-                            onSave={updateArc}
-                        />
+                    <Panel>
+                        <Panel.Heading><Icon.FileAlt /> Summary</Panel.Heading>
+                        <Panel.Body>
+                            <InlineEdit.Wysiwyg
+                                size="small"
+                                id="arc.summary.edit"
+                                value={arc.summary}
+                                name="summary"
+                                onSave={updateArc}
+                            />
+                        </Panel.Body>
                     </Panel>
-                    <Panel
-                        header={
-                            <div>
-                                <span><Icon.Image stack/> Pages</span>
-                                <div style={{float: "right"}}>
-                                    <NewMediaForm bsSize="xsmall" showText={true} onUpload={onNewPage}/>
-                                </div>
+                    <Panel>
+                        <Panel.Heading>
+                            <span><Icon.Image stack/> Pages</span>
+                            <div style={{float: "right"}}>
+                                <NewMediaForm bsSize="xsmall" showText={true} onUpload={onNewPage}/>
                             </div>
-                        }
-                        footer={
-                            <div>
-                                <span>&nbsp;</span>
-                                <div style={{float: "right"}}>
-                                    <NewMediaForm bsSize="xsmall" showText={true} onUpload={onNewPage}/>
-                                </div>
+                        </Panel.Heading>
+                        <Panel.Body>
+                            <PageList xs={6} sm={4} md={4} arcId={arc.id} />
+                        </Panel.Body>
+                        <Panel.Footer>
+                            <span>&nbsp;</span>
+                            <div style={{float: "right"}}>
+                                <NewMediaForm bsSize="xsmall" showText={true} onUpload={onNewPage}/>
                             </div>
-                        }
-                    >
-                        <PageList xs={6} sm={4} md={4} arcId={arc.id} />
+                        </Panel.Footer>
                     </Panel>
                 </Col>
                 <Col xs={12} sm={12} md={4}>

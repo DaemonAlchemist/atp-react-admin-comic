@@ -22,14 +22,17 @@ export default ({character, attributes, updateCharacter, updateAttribute, update
                     </h1>
                 </Col>
                 <Col xs={12} sm={6}>
-                    <Panel header={<span><Icon.IdCard /> {character.name}'s Biography</span>}>
-                        <InlineEdit.Wysiwyg
-                            id={"character.bio.edit" + character.id}
-                            value={character.bio}
-                            name="bio"
-                            onSave={updateCharacter}
-                            size="small"
-                        />
+                    <Panel>
+                        <Panel.Heading><Icon.IdCard /> {character.name}'s Biography</Panel.Heading>
+                        <Panel.Body>
+                            <InlineEdit.Wysiwyg
+                                id={"character.bio.edit" + character.id}
+                                value={character.bio}
+                                name="bio"
+                                onSave={updateCharacter}
+                                size="small"
+                            />
+                        </Panel.Body>
                     </Panel>
                     <AttributeList character={character} />
                 </Col>

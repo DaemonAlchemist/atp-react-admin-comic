@@ -10,15 +10,14 @@ import {Icon} from 'react-font-awesome-5';
 export const attributeDragType = 'comic-attribute';
 
 export default ({character, attributes, updateAttribute, onAttributeMove, newAttribute, deleteAttribute}) =>
-    <Panel header={
-        <span>
+    <Panel>
+        <Panel.Heading>
             <Icon.List /> {character.name}'s Attributes
             <Button onClick={newAttribute} bsStyle="primary" bsSize="xsmall" style={{float: "right"}}>
                 <Icon.Plus fixedWidth />
             </Button>
-        </span>
-    }>
-        <Table fill>
+        </Panel.Heading>
+        <Table>
             <thead>
             <tr>
                 <th style={{width: "20px"}}></th>

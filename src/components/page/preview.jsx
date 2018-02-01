@@ -11,8 +11,35 @@ import moment from "moment";
 export const pageDragType = 'comic-page';
 
 export default ({page, onPageMove, updatePage, onPageDelete}) =>
-    <Panel footer={
-        <div>
+    <Panel style={{position: "relative"}}>
+        <Panel.Body>
+            <DeleteButton onClick={onPageDelete} />
+            <Draggable type={pageDragType} id={page.id}>
+                <PageLink page={page}>
+                    <Image imageId={page.imageId} width={300} height={300} />
+                </PageLink>
+            </Draggable>
+            <DropTarget
+                action="after"
+                accepts={[pageDragType]}
+                id={page.id}
+                onReceiveDrop={onPageMove}
+                style={{
+                    position: "absolute",
+                    right: "-18px",
+                    width: "15px",
+                    height: "100%",
+                    top: 0,
+                    zIndex: 999,
+                }}
+            >
+                <Active>
+                    <Icon.ArrowDown style={{position: "absolute", top: "-10px"}} />
+                    <Icon.ArrowUp style={{position: "absolute", bottom: "5px"}} />
+                </Active>
+            </DropTarget>
+        </Panel.Body>
+        <Panel.Footer>
             <InlineEdit.Text
                 id={"page.name.edit" + page.id}
                 size="default"
@@ -27,31 +54,5 @@ export default ({page, onPageMove, updatePage, onPageDelete}) =>
                     : <span class="text-danger">Disabled</span>
                 }
             </div>
-        </div>
-    } style={{position: "relative"}}>
-        <DeleteButton onClick={onPageDelete} />
-        <Draggable type={pageDragType} id={page.id}>
-            <PageLink page={page}>
-                <Image imageId={page.imageId} width={300} height={300} />
-            </PageLink>
-        </Draggable>
-        <DropTarget
-            action="after"
-            accepts={[pageDragType]}
-            id={page.id}
-            onReceiveDrop={onPageMove}
-            style={{
-                position: "absolute",
-                right: "-18px",
-                width: "15px",
-                height: "100%",
-                top: 0,
-                zIndex: 999,
-            }}
-        >
-            <Active>
-                <Icon.ArrowDown style={{position: "absolute", top: "-10px"}} />
-                <Icon.ArrowUp style={{position: "absolute", bottom: "5px"}} />
-            </Active>
-        </DropTarget>
+        </Panel.Footer>
     </Panel>;

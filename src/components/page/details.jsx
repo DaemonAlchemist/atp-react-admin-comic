@@ -65,15 +65,18 @@ export default ({
             <Col xs={12} sm={8}>
                 <Row>
                     <Col xs={12} sm={6}>
-                        <Panel header={<span><Icon.FileAlt /> Transcript</span>}>
-                            <InlineEdit.Wysiwyg
-                                size="small"
-                                id={"page.summary.edit" + page.id}
-                                value={page.transcript}
-                                name="transcript"
-                                rows={10}
-                                onSave={updatePage}
-                            />
+                        <Panel>
+                            <Panel.Heading><Icon.FileAlt /> Transcript</Panel.Heading>
+                            <Panel.Body>
+                                <InlineEdit.Wysiwyg
+                                    size="small"
+                                    id={"page.summary.edit" + page.id}
+                                    value={page.transcript}
+                                    name="transcript"
+                                    rows={10}
+                                    onSave={updatePage}
+                                />
+                            </Panel.Body>
                         </Panel>
                     </Col>
                     <Col xs={12} sm={6}>

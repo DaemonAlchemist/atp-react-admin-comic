@@ -10,14 +10,13 @@ import {Icon} from 'react-font-awesome-5';
 export const commentaryDragType = 'comic-commentary';
 
 export default ({pageId, userId, comments, onNewComment, onDeleteComment, updateComment, onCommentaryMove}) =>
-    <Panel  header={
-        <div>
+    <Panel>
+        <Panel.Heading>
             <Icon.Comment /> Commentary
             <Button bsStyle="primary" bsSize="xsmall" style={{float: "right"}} onClick={onNewComment(pageId, userId)}>
                 <Icon.Plus fixedWidth /> Add new commentary
             </Button>
-        </div>
-    }>
+        </Panel.Heading>
         <Table fill>
             <thead>
             <tr>
