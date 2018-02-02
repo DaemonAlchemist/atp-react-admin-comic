@@ -12,6 +12,7 @@ export default connect(
         updateArc: (data, dispatch) => {dispatch(Arc().action.update(props.id, data));},
         updateThumbnail: thumbnailFileId => {dispatch(Arc().action.update(props.id, {thumbnailFileId}));},
         updateBanner: bannerFileId => {dispatch(Arc().action.update(props.id, {bannerFileId}));},
+        updateEnabled: enabled => {dispatch(Arc().action.update(props.id, {enabled}))},
         onNewPage: data => {
             dispatch(Page().action.create({
                 arcId: props.id,

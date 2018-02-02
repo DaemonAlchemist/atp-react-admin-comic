@@ -6,11 +6,11 @@ import PageList from "../../containers/page/list";
 import config from 'atp-config';
 import {Icon} from 'react-font-awesome-5';
 
-export default ({arc, updateArc, updateThumbnail, updateBanner, onNewPage}) =>
+export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, onNewPage}) =>
     arc
         ? <div>
             <Row>
-                <Col xs={12}>
+                <Col xs={6}>
                     <h1 style={{marginTop: 0}}>
                         <InlineEdit.Text
                             id="arc.name.edit"
@@ -20,6 +20,9 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, onNewPage}) =>
                             onSave={updateArc}
                         />
                     </h1>
+                </Col>
+                <Col xs={6}>
+                    <InlineEdit.Toggle enabled={arc.enabled} update={updateEnabled}/>
                 </Col>
             </Row>
             <Row>

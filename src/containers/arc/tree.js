@@ -1,6 +1,6 @@
 
 import {connectWithLifecycle} from "react-lifecycle-component";
-import ArcTree from "../../components/arc/tree";
+import ArcTree, {ArcTreeNode} from "../../components/arc/tree";
 import {Arc} from "../../reducer/arc";
 import {Page} from "../../reducer/page";
 import {pageDragType} from "../../components/page/preview";
@@ -12,7 +12,7 @@ export default connectWithLifecycle(
     (state, props) => ({
         arcIds: Arc().select.some(() => state, arc => !arc.parentId).map(arc => arc.id),
         getObject: (state, id) => Arc().select.one(() => state, id),
-        getContent: arc => arc.name,
+        getContent: ArcTreeNode,
         getId: arc => arc.id,
         getChildren: (state, id) => Arc().select.some(() => state, arc => arc.parentId === id),
         sorter: sortBy('sortOrder'),
