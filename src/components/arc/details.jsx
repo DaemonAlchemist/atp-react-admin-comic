@@ -14,6 +14,7 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                     <h1 style={{marginTop: 0}}>
                         <InlineEdit.Text
                             id="arc.name.edit"
+                            inline
                             value={arc.name}
                             label="Name"
                             name="name"
@@ -21,7 +22,7 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                         />
                     </h1>
                 </Col>
-                <Col xs={6}>
+                <Col xs={6} className="text-right">
                     <InlineEdit.Toggle enabled={arc.enabled} update={updateEnabled}/>
                 </Col>
             </Row>
@@ -31,6 +32,7 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                         http://{config.get('public.hostName')}/.../
                         <InlineEdit.Text
                             id="arc.url.edit"
+                            inline
                             value={arc.url}
                             label="Url"
                             name="url"

@@ -18,6 +18,7 @@ export default ({
                 <h1 style={{marginTop: 0}}>
                     <InlineEdit.Text
                         id={"page.name.edit" + page.id}
+                        inline
                         value={page.name}
                         label="Name"
                         name="name"
@@ -29,6 +30,7 @@ export default ({
                     http://{config.get('public.hostName')}/.../
                     <InlineEdit.Text
                         id={"page.url.edit" + page.id}
+                        inline
                         value={page.url}
                         label="Url"
                         name="url"
@@ -38,7 +40,7 @@ export default ({
             </Col>
             <Col xs={12} sm={6}>
                 <Row>
-                    <Col xs={12}>
+                    <Col xs={12} className="text-right">
                         <InlineEdit.Toggle enabled={page.enabled} update={updateEnabled}/>
                     </Col>
                     <Col xs={12}>
