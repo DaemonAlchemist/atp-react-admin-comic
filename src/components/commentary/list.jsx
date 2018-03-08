@@ -13,7 +13,7 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
     <Panel>
         <Panel.Heading>
             <Icon.Comment /> Commentary
-            <Button bsStyle="primary" bsSize="xsmall" style={{float: "right"}} onClick={onNewComment(pageId, userId)}>
+            <Button bsStyle="link" style={{float: "right", marginTop: "-2px"}} onClick={onNewComment(pageId, userId)}>
                 <Icon.Plus fixedWidth /> Add new commentary
             </Button>
         </Panel.Heading>

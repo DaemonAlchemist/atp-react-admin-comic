@@ -59,7 +59,7 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                         <Panel.Heading>
                             <span><Icon.Image stack/> Pages</span>
                             <div style={{float: "right"}}>
-                                <NewMediaForm bsSize="xsmall" showText={true} onUpload={onNewPage}/>
+                                <NewMediaForm showText={true} onUpload={onNewPage}/>
                             </div>
                         </Panel.Heading>
                         <Panel.Body>
@@ -68,7 +68,7 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                         <Panel.Footer>
                             <span>&nbsp;</span>
                             <div style={{float: "right"}}>
-                                <NewMediaForm bsSize="xsmall" showText={true} onUpload={onNewPage}/>
+                                <NewMediaForm showText={true} onUpload={onNewPage}/>
                             </div>
                         </Panel.Footer>
                     </Panel>

@@ -13,8 +13,8 @@ export default ({character, attributes, updateAttribute, onAttributeMove, newAtt
     <Panel>
         <Panel.Heading>
             <Icon.List /> {character.name}'s Attributes
-            <Button onClick={newAttribute} bsStyle="primary" bsSize="xsmall" style={{float: "right"}}>
-                <Icon.Plus fixedWidth />
+            <Button onClick={newAttribute} bsStyle="link" style={{float: "right", marginTop: "-3px"}}>
+                <Icon.Plus fixedWidth /> Add attribute
             </Button>
         </Panel.Heading>
         <Table>
@@ -56,8 +56,8 @@ export default ({character, attributes, updateAttribute, onAttributeMove, newAtt
                                 onSave={updateAttribute(att.id)}
                             />
                         </td>
-                        <td className="text-danger">
-                            <Icon.Trash onClick={deleteAttribute(att.id)} />
+                        <td className="text-danger" style={{whiteSpace: "nowrap"}}>
+                            <Icon.Trash onClick={deleteAttribute(att.id)} /> Delete
                         </td>
                     </tr>,
                     <DropTargets.TableRow

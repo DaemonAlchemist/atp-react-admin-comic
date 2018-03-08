@@ -1,15 +1,11 @@
 
 import React from "react";
 import {Field} from "redux-form";
-import {Button, InputGroup} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {Icon} from 'react-font-awesome-5';
 
 export default props =>
     <form onSubmit={props.handleSubmit}>
-        <InputGroup>
-            <Field name="name" placeholder="Character name" component="input" className="form-control"/>
-            <InputGroup.Button>
-                <Button bsStyle="primary" type="submit"><Icon.Plus /> Create</Button>
-            </InputGroup.Button>
-        </InputGroup>
+        <Field name="name" placeholder="Character name" component="input" className="form-control"/>
+        <Button bsStyle="link" style={{position: "absolute", top: "10px", right: "16px", color: "#000"}} type="submit"><Icon.Plus /> Create</Button>
     </form>;
