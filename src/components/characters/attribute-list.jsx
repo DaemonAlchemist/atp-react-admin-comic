@@ -6,7 +6,7 @@ import {Panel, Table, Button} from 'react-bootstrap';
 import {InlineEdit} from 'atp-inline-edit';
 import {Draggable, DropTargets, NotDragging, IsDragging} from 'atp-dnd';
 import {Icon} from 'react-font-awesome-5';
-
+import {DeleteButton} from 'atp-ui';
 export const attributeDragType = 'comic-attribute';
 
 export default ({character, attributes, updateAttribute, onAttributeMove, newAttribute, deleteAttribute}) =>
@@ -56,8 +56,16 @@ export default ({character, attributes, updateAttribute, onAttributeMove, newAtt
                                 onSave={updateAttribute(att.id)}
                             />
                         </td>
-                        <td className="text-danger" style={{whiteSpace: "nowrap"}}>
-                            <Icon.Trash onClick={deleteAttribute(att.id)} /> Delete
+                        <td>
+                            <DeleteButton
+                                id={`characterAttDeleteBtn${att.id}`}
+                                onClick={deleteAttribute(att.id)}
+                                text="Delete"
+                                message={`Are you sure you want to delete ${character.name}'s ${att.name || "attribute"}`}
+                                width="250px"
+                                confirmText="Yes, delete it"
+                                cancelText="No, keep it"
+                            />
                         </td>
                     </tr>,
                     <DropTargets.TableRow

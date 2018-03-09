@@ -5,12 +5,25 @@ import {InlineEdit} from 'atp-inline-edit';
 import {MediaSelector} from 'atp-media';
 import AttributeList from "../../containers/characters/attribute-list";
 import {Icon} from 'react-font-awesome-5';
+import {DeleteButton} from 'atp-ui';
 
-export default ({character, attributes, updateCharacter, updateAttribute, updateImage}) =>
+export default ({character, attributes, updateCharacter, updateAttribute, updateImage, deleteCharacter}) =>
     <div>
         {character
             ? <Row>
                 <Col xs={12}>
+                    <div style={{float: "right"}}>
+                        <DeleteButton
+                            id={`characterDeleteBtn${character.id}`}
+                            size="lg"
+                            onClick={deleteCharacter}
+                            text={`Delete ${character.name}`}
+                            message={`Are you sure you want to delete ${character.name}?  This cannot be undone.`}
+                            confirmText={`Yes, delete ${character.name}`}
+                            cancelText={`No, keep ${character.name}`}
+                            width="250px"
+                        />
+                    </div>
                     <h1 style={{marginTop: 0}}>
                         <InlineEdit.Text
                             id={"character.name.edit" + character.id}

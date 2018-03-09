@@ -15,6 +15,7 @@ export default connectWithLifecycle(
             dispatch(Attribute().action.collection.get({characterId: props.characterId}));
         },
         updateImage: imageId => {dispatch(Character().action.update(props.characterId, {imageId}));},
-        updateCharacter: (data, dispatch) => {dispatch(Character().action.update(props.characterId, data));}
+        updateCharacter: (data, dispatch) => {dispatch(Character().action.update(props.characterId, data));},
+        deleteCharacter: () => {dispatch(Character().action.delete(props.characterId));}
     })
 )(CharacterDetails);
