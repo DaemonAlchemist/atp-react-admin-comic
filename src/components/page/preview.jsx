@@ -12,8 +12,18 @@ export const pageDragType = 'comic-page';
 
 export default ({page, onPageMove, updatePage, onPageDelete}) =>
     <Panel style={{position: "relative"}}>
+        <Panel.Heading>
+            <InlineEdit.Text
+                id={"page.name.edit" + page.id}
+                inline
+                size="default"
+                value={page.name}
+                label="Name"
+                name="name"
+                onSave={updatePage}
+            />
+        </Panel.Heading>
         <Panel.Body>
-            <DeleteButton onClick={onPageDelete} />
             <Draggable type={pageDragType} id={page.id}>
                 <PageLink page={page}>
                     <Image imageId={page.imageId} width={300} height={300} />
@@ -39,20 +49,21 @@ export default ({page, onPageMove, updatePage, onPageDelete}) =>
                 </Active>
             </DropTarget>
         </Panel.Body>
-        <Panel.Footer>
-            <InlineEdit.Text
-                id={"page.name.edit" + page.id}
-                size="default"
-                value={page.name}
-                label="Name"
-                name="name"
-                onSave={updatePage}
-            />
-            <div style={{float: "right"}}>
-                {page.enabled
-                    ? <span class="text-success">{moment(page.postDate).format("MMM D, Y")}</span>
-                    : <span class="text-danger">Disabled</span>
-                }
+        <Panel.Footer style={{position: "relative"}}>
+            {page.enabled
+                ? <span class="text-success"> {moment(page.postDate).format("MMM D, Y")}</span>
+                : <span class="text-danger"> Disabled</span>
+            }
+            <div style={{position: "absolute", right: 0, top: "2px"}}>
+                <DeleteButton
+                    id={`comicPageDeleteBtn${page.id}`}
+                    onClick={onPageDelete}
+                    text="Delete"
+                    message="Are you sure you want to delete this page?  You can't get it back if you do."
+                    width="250px"
+                    confirmText="Yes, delete it"
+                    cancelText="No, keep it"
+                />
             </div>
         </Panel.Footer>
     </Panel>;

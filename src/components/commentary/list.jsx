@@ -6,6 +6,7 @@ import {InlineEdit} from 'atp-inline-edit';
 import {Draggable, DropTarget, DropTargets, Active, Inactive, IsDragging, NotDragging} from 'atp-dnd';
 import {sortBy} from 'atp-pointfree';
 import {Icon} from 'react-font-awesome-5';
+import {DeleteButton} from 'atp-ui';
 
 export const commentaryDragType = 'comic-commentary';
 
@@ -53,8 +54,15 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
                             size="default"
                             rows={3}
                         /></td>
-                        <td className="text-danger">
-                            <Icon.Trash onClick={onDeleteComment(comment.id)}/>
+                        <td>
+                            <DeleteButton
+                                id={`commentaryDeleteBtn${comment.id}`}
+                                onClick={onDeleteComment(comment.id)}
+                                message="Are you sure you want to delete this commentary?  You can't get it back if you do."
+                                confirmText="Yes, delete it"
+                                cancelText="No, keep it"
+                                width="250px"
+                            />
                         </td>
                     </tr>,
                     <DropTargets.TableRow key={"afterDrop" + comment.id} id={comment.id} accepts={[commentaryDragType]} action="after" onMove={onCommentaryMove} />
