@@ -43,7 +43,6 @@ export default ({character, attributes, updateCharacter, updateAttribute, update
                                 value={character.bio}
                                 name="bio"
                                 onSave={updateCharacter}
-                                size="small"
                             />
                         </Panel.Body>
                     </Panel>

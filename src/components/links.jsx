@@ -48,3 +48,15 @@ export const ArcLinkFull = connectWithLifecycle(
       </ArcLink>
     : <span><Icon.Spinner spin /> Loading...</span>
 );
+
+export const ArcHierarchy = connect(
+    (state, props) => ({
+        arc: Arc().select.one(get(state), props.arcId),
+    })
+)(({arc}) => arc
+    ? <span>
+        {arc.parentId && <span><ArcHierarchy arcId={arc.parentId} />&nbsp;<Icon.ChevronRight />&nbsp;</span>}
+        <ArcLinkFull arcId={arc.id} hideIcon />
+      </span>
+    : <span><Icon.Spinner spin /> Loading...</span>
+);

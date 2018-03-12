@@ -15,10 +15,9 @@ export default ({page, onPageMove, updatePage, onPageDelete}) =>
         <Panel.Heading>
             <InlineEdit.Text
                 id={"page.name.edit" + page.id}
-                inline
-                size="default"
+                size="regular"
                 value={page.name}
-                label="Name"
+                label="Page Title"
                 name="name"
                 onSave={updatePage}
             />

@@ -4,7 +4,7 @@ import {InlineEdit} from 'atp-inline-edit';
 import {Row, Col, Panel, InputGroup, Button} from 'react-bootstrap';
 import CommentaryList from "../../containers/commentary/list";
 import config from 'atp-config';
-import {ArcLinkFull} from '../links';
+import {ArcHierarchy} from '../links';
 import {Assigner} from 'atp-ui';
 import {Icon} from 'react-font-awesome-5';
 
@@ -14,17 +14,17 @@ export default ({
 }) => page
     ? <div>
         <Row>
-            <Col xs={12} sm={6}>
+            <Col xs={12} sm={9}>
                 <h1 style={{marginTop: 0}}>
+                    <ArcHierarchy arcId={page.arcId} />
+                    &nbsp;<Icon.ChevronRight />&nbsp;
                     <InlineEdit.Text
                         id={"page.name.edit" + page.id}
                         inline
                         value={page.name}
-                        label="Name"
                         name="name"
                         onSave={updatePage}
                     />
-                    &nbsp; in <ArcLinkFull arcId={page.arcId} hideIcon />
                 </h1>
                 <h3 style={{marginTop: 0}}>
                     http://{config.get('public.hostName')}/.../
@@ -32,30 +32,29 @@ export default ({
                         id={"page.url.edit" + page.id}
                         inline
                         value={page.url}
-                        label="Url"
                         name="url"
                         onSave={updatePage}
                     />
                 </h3>
             </Col>
-            <Col xs={12} sm={6}>
+            <Col xs={12} sm={3}>
                 <Row>
                     <Col xs={12} className="text-right">
                         <InlineEdit.Toggle enabled={page.enabled} update={updateEnabled}/>
                     </Col>
                     <Col xs={12}>
-                        <h4 style={{marginTop: 0}} className="text-right">
+                        <h3 style={{marginTop: 0}} className="text-right">
                             {page.enabled
                                 ? <InlineEdit.Datepicker
                                     id={"page.date.edit" + page.id}
                                     value={page.postDate}
-                                    label="Date"
+                                    label="Release Date"
                                     name="postDate"
                                     onSave={updatePage}
                                   />
                                 : <span>&nbsp;</span>
                             }
-                        </h4>
+                        </h3>
                     </Col>
                 </Row>
             </Col>
@@ -71,7 +70,6 @@ export default ({
                             <Panel.Heading><Icon.FileAlt /> Transcript</Panel.Heading>
                             <Panel.Body>
                                 <InlineEdit.Wysiwyg
-                                    size="small"
                                     id={"page.summary.edit" + page.id}
                                     value={page.transcript}
                                     name="transcript"

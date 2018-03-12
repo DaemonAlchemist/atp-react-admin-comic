@@ -44,14 +44,13 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
                             value={comment.title}
                             name="title"
                             onSave={updateComment(comment.id)}
-                            size="default"
+                            size="regular"
                         /></td>
                         <td><InlineEdit.Wysiwyg
                             id={"commentart.text.edit" + comment.id}
                             value={comment.text}
                             name="text"
                             onSave={updateComment(comment.id)}
-                            size="default"
                             rows={3}
                         /></td>
                         <td>

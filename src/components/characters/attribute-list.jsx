@@ -39,8 +39,8 @@ export default ({character, attributes, updateAttribute, onAttributeMove, newAtt
                         <td>
                             <InlineEdit.Text
                                 id={"att.name.edit" + att.id}
+                                inline
                                 value={att.name}
-                                label="Name"
                                 name="Name"
                                 onSave={updateAttribute(att.id)}
                                 size="small"
@@ -49,8 +49,8 @@ export default ({character, attributes, updateAttribute, onAttributeMove, newAtt
                         <td>
                             <InlineEdit.Text
                                 id={"att.value.edit" + att.id}
+                                inline
                                 value={att.value}
-                                label="Value"
                                 name="value"
                                 size="small"
                                 onSave={updateAttribute(att.id)}

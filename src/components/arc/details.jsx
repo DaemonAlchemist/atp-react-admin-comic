@@ -1,29 +1,33 @@
 import React from "react";
 import {InlineEdit} from 'atp-inline-edit';
 import {MediaSelector, NewMediaForm} from 'atp-media';
-import {Row, Col, Panel} from 'react-bootstrap';
+import {Row, Col, Panel, Breadcrumb} from 'react-bootstrap';
 import PageList from "../../containers/page/list";
 import config from 'atp-config';
 import {Icon} from 'react-font-awesome-5';
+import {ArcHierarchy} from "../../components/links";
 
 export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, onNewPage}) =>
     arc
         ? <div>
             <Row>
-                <Col xs={6}>
+                <Col xs={12}>
+                    <div style={{float: "right"}}><InlineEdit.Toggle enabled={arc.enabled} update={updateEnabled}/></div>
                     <h1 style={{marginTop: 0}}>
+                        {arc.parentId &&
+                            <span>
+                                <ArcHierarchy arcId={arc.parentId} />
+                                &nbsp;<Icon.ChevronRight />&nbsp;
+                            </span>
+                        }
                         <InlineEdit.Text
                             id="arc.name.edit"
                             inline
                             value={arc.name}
-                            label="Name"
                             name="name"
                             onSave={updateArc}
                         />
                     </h1>
-                </Col>
-                <Col xs={6} className="text-right">
-                    <InlineEdit.Toggle enabled={arc.enabled} update={updateEnabled}/>
                 </Col>
             </Row>
             <Row>
@@ -34,8 +38,8 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                             id="arc.url.edit"
                             inline
                             value={arc.url}
-                            label="Url"
                             name="url"
+                            size="regular"
                             onSave={updateArc}
                         />
                     </h3>
@@ -47,7 +51,6 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                         <Panel.Heading><Icon.FileAlt /> Summary</Panel.Heading>
                         <Panel.Body>
                             <InlineEdit.Wysiwyg
-                                size="small"
                                 id="arc.summary.edit"
                                 value={arc.summary}
                                 name="summary"
