@@ -9,9 +9,11 @@ export default connectWithLifecycle(
         pages: Page().select.some(get(state), _(equals(props.arcId), prop('arcId'))),
         sorter: props.sorter || sortBy('sortOrder')
     }),
-    (dispatch, props) => ({
-        componentDidMount: () => {
-            dispatch(Page().action.collection.get());
+    (dispatch, {arcId}) => ({
+        componentWillReceiveProps: function({arcId}) {
+            if(arcId != this.props.arcId) {
+                dispatch(Page().action.collection.get({arcId}));
+            }
         }
     })
 )(PageList);
