@@ -10,6 +10,9 @@ export default connectWithLifecycle(
         sorter: props.sorter || sortBy('sortOrder')
     }),
     (dispatch, {arcId}) => ({
+        componentDidMount: () => {
+            dispatch(Page().action.collection.get({arcId}));
+        },
         componentWillReceiveProps: function({arcId}) {
             if(arcId != this.props.arcId) {
                 dispatch(Page().action.collection.get({arcId}));
