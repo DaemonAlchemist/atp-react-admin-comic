@@ -14,7 +14,7 @@ export default ({
 }) => page
     ? <div>
         <Row>
-            <Col xs={12} sm={9}>
+            <Col xs={12} md={9}>
                 <h1 style={{marginTop: 0}}>
                     <ArcHierarchy arcId={page.arcId} />
                     &nbsp;<Icon.ChevronRight />&nbsp;
@@ -37,7 +37,7 @@ export default ({
                     />
                 </h3>
             </Col>
-            <Col xs={12} sm={3}>
+            <Col xs={12} md={3}>
                 <Row>
                     <Col xs={12} className="text-right">
                         <InlineEdit.Toggle enabled={page.enabled} update={updateEnabled}/>
@@ -60,12 +60,12 @@ export default ({
             </Col>
         </Row>
         <Row>
-            <Col xs={12} sm={4}>
+            <Col xs={12} sm={6} md={4}>
                 <MediaSelector.Image title="Page Image" imageId={page.imageId} onSave={updateImage} width={false} height={false} />
             </Col>
-            <Col xs={12} sm={8}>
+            <Col xs={12} sm={6} md={8}>
                 <Row>
-                    <Col xs={12} sm={6}>
+                    <Col xs={12} md={6}>
                         <Panel>
                             <Panel.Heading><Icon.FileAlt /> Transcript</Panel.Heading>
                             <Panel.Body>
@@ -79,7 +79,7 @@ export default ({
                             </Panel.Body>
                         </Panel>
                     </Col>
-                    <Col xs={12} sm={6}>
+                    <Col xs={12} md={6}>
                         <Assigner
                             Icon={Icon.Users}
                             label="Characters"

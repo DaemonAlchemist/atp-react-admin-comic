@@ -12,7 +12,7 @@ export const characterDragType = 'comic-character';
 
 export default ({characters, selectedCharacterId, isSelected, onCharacterMove, onClickCharacter}) =>
     <Row>
-        <Col xs={6} sm={4} md={3}>
+        <Col xs={12} sm={4} md={3}>
             {characters
                 ? <ListGroup>
                 <ListGroupItem>
@@ -37,7 +37,7 @@ export default ({characters, selectedCharacterId, isSelected, onCharacterMove, o
                 : <span><Icon.Spinner spin /> Loading...</span>
             }
         </Col>
-        <Col xs={6} sm={8} md={9}>
+        <Col xs={12} sm={8} md={9}>
             {selectedCharacterId
                 ? <CharacterDetails characterId={selectedCharacterId} />
                 : <div>No character selected</div>

@@ -8,7 +8,7 @@ import {Icon} from 'react-font-awesome-5';
 
 export default props =>
     <Row>
-        <Col xs={3}>
+        <Col xs={12} sm={6} lg={4} xl={3}>
             <Panel>
                 <Panel.Heading><Icon.Sitemap /> Story Arcs</Panel.Heading>
                 <Panel.Body>
@@ -16,7 +16,7 @@ export default props =>
                 </Panel.Body>
             </Panel>
         </Col>
-        <Col xs={9}>
+        <Col xs={12} sm={6} lg={8} xl={9}>
             <ArcDetails id={props.selectedArcId} />
         </Col>
     </Row>;

@@ -66,7 +66,7 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                             </div>
                         </Panel.Heading>
                         <Panel.Body>
-                            <PageList xs={6} sm={4} md={4} arcId={arc.id} />
+                            <PageList xs={6} sm={6} md={4} arcId={arc.id} />
                         </Panel.Body>
                         <Panel.Footer>
                             <span>&nbsp;</span>
