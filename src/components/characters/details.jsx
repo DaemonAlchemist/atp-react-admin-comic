@@ -6,6 +6,7 @@ import {MediaSelector} from 'atp-media';
 import AttributeList from "../../containers/characters/attribute-list";
 import {Icon} from 'react-font-awesome-5';
 import {DeleteButton} from 'atp-ui';
+import {Tags} from 'atp-tags';
 
 export default ({character, attributes, updateCharacter, updateAttribute, updateImage, deleteCharacter}) =>
     <div>
@@ -47,6 +48,7 @@ export default ({character, attributes, updateCharacter, updateAttribute, update
                         </Panel.Body>
                     </Panel>
                     <AttributeList character={character} />
+                    <Tags entityType="comicCharacter" entityId={character.id} />
                 </Col>
                 <Col xs={12} sm={6}>
                     <MediaSelector.Image

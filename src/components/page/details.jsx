@@ -7,6 +7,7 @@ import config from 'atp-config';
 import {ArcHierarchy} from '../links';
 import {Assigner} from 'atp-ui';
 import {Icon} from 'react-font-awesome-5';
+import {Tags} from 'atp-tags';
 
 export default ({
     page, updatePage, updateImage, updateEnabled,
@@ -78,6 +79,7 @@ export default ({
                                 />
                             </Panel.Body>
                         </Panel>
+                        <Tags entityType="comicPage" entityId={page.id} />
                     </Col>
                     <Col xs={12} md={6}>
                         <Assigner

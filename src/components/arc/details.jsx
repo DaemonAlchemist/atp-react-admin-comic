@@ -6,6 +6,7 @@ import PageList from "../../containers/page/list";
 import config from 'atp-config';
 import {Icon} from 'react-font-awesome-5';
 import {ArcHierarchy} from "../../components/links";
+import {Tags} from 'atp-tags';
 
 export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, onNewPage}) =>
     arc
@@ -79,6 +80,7 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                 <Col xs={12} sm={12} md={4}>
                     <MediaSelector.Image title="Thumbnail Image" imageId={arc.thumbnailFileId} onSave={updateThumbnail}/>
                     <MediaSelector.Image title="Banner Image" imageId={arc.bannerFileId} onSave={updateBanner}/>
+                    <Tags entityType="comicArc" entityId={arc.id} />
                 </Col>
             </Row>
           </div>
