@@ -7,13 +7,19 @@ import config from 'atp-config';
 import {Icon} from 'react-font-awesome-5';
 import {ArcHierarchy} from "../../components/links";
 import {Tags} from 'atp-tags';
+import {HasPermission} from "atp-uac";
 
 export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, onNewPage}) =>
     arc
         ? <div>
             <Row>
                 <Col xs={12}>
-                    <div style={{float: "right"}}><InlineEdit.Toggle enabled={arc.enabled} update={updateEnabled}/></div>
+                    <HasPermission yes permissions={["comic.arc.update"]}>
+                        <div style={{float: "right"}}><InlineEdit.Toggle enabled={arc.enabled} update={updateEnabled}/></div>
+                    </HasPermission>
+                    <HasPermission no permissions={["comic.arc.update"]}>
+                        <div style={{float: "right"}}><InlineEdit.Toggle disabled enabled={arc.enabled} update={updateEnabled}/></div>
+                    </HasPermission>
                     <h1 style={{marginTop: 0}}>
                         {arc.parentId &&
                             <span>
@@ -21,13 +27,18 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                                 &nbsp;<Icon.ChevronRight />&nbsp;
                             </span>
                         }
-                        <InlineEdit.Text
-                            id="arc.name.edit"
-                            inline
-                            value={arc.name}
-                            name="name"
-                            onSave={updateArc}
-                        />
+                        <HasPermission yes permissions={["comic.arc.update"]}>
+                            <InlineEdit.Text
+                                id="arc.name.edit"
+                                inline
+                                value={arc.name}
+                                name="name"
+                                onSave={updateArc}
+                            />
+                        </HasPermission>
+                        <HasPermission no permissions={["comic.arc.update"]}>
+                            {arc.name}
+                        </HasPermission>
                     </h1>
                 </Col>
             </Row>
@@ -35,14 +46,19 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                 <Col xs={12}>
                     <h3 style={{marginTop: 0}}>
                         http://{config.get('public.hostName')}/.../
-                        <InlineEdit.Text
-                            id="arc.url.edit"
-                            inline
-                            value={arc.url}
-                            name="url"
-                            size="regular"
-                            onSave={updateArc}
-                        />
+                        <HasPermission yes permissions={["comic.arc.update"]}>
+                            <InlineEdit.Text
+                                id="arc.url.edit"
+                                inline
+                                value={arc.url}
+                                name="url"
+                                size="regular"
+                                onSave={updateArc}
+                            />
+                        </HasPermission>
+                        <HasPermission no permissions={["comic.arc.update"]}>
+                            {arc.url}
+                        </HasPermission>
                     </h3>
                 </Col>
             </Row>
@@ -51,12 +67,17 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                     <Panel>
                         <Panel.Heading><Icon.FileAlt /> Summary</Panel.Heading>
                         <Panel.Body>
-                            <InlineEdit.Wysiwyg
-                                id="arc.summary.edit"
-                                value={arc.summary}
-                                name="summary"
-                                onSave={updateArc}
-                            />
+                            <HasPermission yes permissions={["comic.arc.update"]}>
+                                <InlineEdit.Wysiwyg
+                                    id="arc.summary.edit"
+                                    value={arc.summary}
+                                    name="summary"
+                                    onSave={updateArc}
+                                />
+                            </HasPermission>
+                            <HasPermission no permissions={["comic.arc.update"]}>
+                                {arc.summary}
+                            </HasPermission>
                         </Panel.Body>
                     </Panel>
                     <Panel>

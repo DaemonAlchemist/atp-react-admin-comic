@@ -5,6 +5,8 @@ import {Arc} from "../../reducer/arc";
 import {Page} from "../../reducer/page";
 import {pageDragType} from "../../components/page/preview";
 import {sortBy} from 'atp-pointfree';
+import {hasPermission} from "atp-uac";
+import {get} from "atp-pointfree";
 
 const arcDragType = 'comic-arc';
 
@@ -17,6 +19,9 @@ export default connectWithLifecycle(
         getChildren: (state, id) => Arc().select.some(() => state, arc => arc.parentId === id),
         sorter: sortBy('sortOrder'),
         draggable: arcDragType,
+        canDrag: hasPermission(get(state), "comic.arc.edit"),
+        canCreate: hasPermission(get(state), "comic.arc.create"),
+        canDelete: hasPermission(get(state), "comic.arc.delete"),
         accepts: {
             [pageDragType]: true,
             [arcDragType]: (item, dropTargetProps) => !Arc()
