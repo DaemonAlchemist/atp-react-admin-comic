@@ -14,7 +14,7 @@ export const pageDragType = 'comic-page';
 export default ({page, onPageMove, updatePage, onPageDelete}) =>
     <Panel style={{position: "relative"}}>
         <Panel.Heading>
-            <HasPermission yes permissions={["comic.page.edit"]}>
+            <HasPermission yes permissions={["comic.page.update"]}>
                 <InlineEdit.Text
                     id={"page.name.edit" + page.id}
                     size="regular"
@@ -24,24 +24,24 @@ export default ({page, onPageMove, updatePage, onPageDelete}) =>
                     onSave={updatePage}
                 />
             </HasPermission>
-            <HasPermission no permissions={["comic.page.edit"]}>
+            <HasPermission no permissions={["comic.page.update"]}>
                 {page.name}
             </HasPermission>
         </Panel.Heading>
         <Panel.Body>
-            <HasPermission yes permissions={["comic.page.edit"]}>
+            <HasPermission yes permissions={["comic.page.update"]}>
                 <Draggable type={pageDragType} id={page.id}>
                     <PageLink page={page}>
                         <Image imageId={page.imageId} width={300} height={300} />
                     </PageLink>
                 </Draggable>
             </HasPermission>
-            <HasPermission no permissions={["comic.page.edit"]}>
+            <HasPermission no permissions={["comic.page.update"]}>
                 <PageLink page={page}>
                     <Image imageId={page.imageId} width={300} height={300} />
                 </PageLink>
             </HasPermission>
-            <HasPermission yes permissions={["comic.page.edit"]}>
+            <HasPermission yes permissions={["comic.page.update"]}>
                 <DropTarget
                     action="after"
                     accepts={[pageDragType]}
@@ -69,7 +69,7 @@ export default ({page, onPageMove, updatePage, onPageDelete}) =>
                 : <span class="text-danger"> Disabled</span>
             }
             <div style={{position: "absolute", right: 0, top: "2px"}}>
-                <HasPermission yes permissions={["comic.page.edit"]}>
+                <HasPermission yes permissions={["comic.page.update"]}>
                     <DeleteButton
                         id={`comicPageDeleteBtn${page.id}`}
                         onClick={onPageDelete}
