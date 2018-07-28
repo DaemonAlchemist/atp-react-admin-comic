@@ -1,6 +1,6 @@
 {
   "name": "atp-comic",
-  "version": "0.26.0",
+  "version": "0.26.1",
   "description": "A module for managing webcomics.",
   "main": "lib/index.js",
   "scripts": {
