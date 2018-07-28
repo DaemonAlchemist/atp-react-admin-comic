@@ -8,6 +8,7 @@ import {Icon} from 'react-font-awesome-5';
 import {ArcHierarchy} from "../../components/links";
 import {Tags} from 'atp-tags';
 import {HasPermission} from "atp-uac";
+import {Image} from "atp-media";
 
 export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, onNewPage}) =>
     arc
@@ -99,8 +100,20 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                     </Panel>
                 </Col>
                 <Col xs={12} sm={12} md={4}>
-                    <MediaSelector.Image title="Thumbnail Image" imageId={arc.thumbnailFileId} onSave={updateThumbnail}/>
-                    <MediaSelector.Image title="Banner Image" imageId={arc.bannerFileId} onSave={updateBanner}/>
+                    <HasPermission yes permissions={["comic.arc.update"]}>
+                        <MediaSelector.Image title="Thumbnail Image" imageId={arc.thumbnailFileId} onSave={updateThumbnail}/>
+                        <MediaSelector.Image title="Banner Image" imageId={arc.bannerFileId} onSave={updateBanner}/>
+                    </HasPermission>
+                    <HasPermission no permissions={["comic.arc.update"]}>
+                        <Panel>
+                            <Panel.Heading><Icon.Image /> Thumbnail</Panel.Heading>
+                            <Panel.Body><Image imageId={arc.thumbnailFileId}/></Panel.Body>
+                        </Panel>
+                        <Panel>
+                            <Panel.Heading><Icon.Image /> Banner</Panel.Heading>
+                            <Panel.Body><Image imageId={arc.bannerFileId}/></Panel.Body>
+                        </Panel>
+                    </HasPermission>
                     <Tags entityType="comicArc" entityId={arc.id} />
                 </Col>
             </Row>
