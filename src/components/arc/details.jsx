@@ -9,6 +9,7 @@ import {ArcHierarchy} from "../../components/links";
 import {Tags} from 'atp-tags';
 import {HasPermission} from "atp-uac";
 import {Image} from "atp-media";
+import marked from "marked";
 
 export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, onNewPage}) =>
     arc
@@ -77,7 +78,11 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                                 />
                             </HasPermission>
                             <HasPermission no permissions={["comic.arc.update"]}>
-                                {arc.summary}
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: marked(arc.summary || "")
+                                    }}
+                                />
                             </HasPermission>
                         </Panel.Body>
                     </Panel>
