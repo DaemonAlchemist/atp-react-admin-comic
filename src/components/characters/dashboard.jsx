@@ -28,7 +28,7 @@ export default ({characters, selectedCharacterId, isSelected, onCharacterMove, o
                                 <Draggable onClick={onClickCharacter(character.id)} type={characterDragType} id={character.id} key={character.id}>
                                     <Icon.Bars /> {character.name}
                                 </Draggable>
-                            </ListGroupItem>,
+                            </ListGroupItem>
                             <DropTargets.ListGroupItem
                                 key={"characterDropTarget" + character.id}
                                 id={character.id}
