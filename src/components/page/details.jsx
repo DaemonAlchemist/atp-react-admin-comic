@@ -141,7 +141,7 @@ export default ({
                         <HasPermission no permissions={["comic.page.update"]}>
                             <Panel>
                                 <Panel.Heading><Icon.Users /> Characters</Panel.Heading>
-                                <Panel.Body>{pageCharacters.map(char => <p>{char.name}</p>)}</Panel.Body>
+                                <Panel.Body>{pageCharacters.map(char => char && <p key={char.id}>{char.name}</p>)}</Panel.Body>
                             </Panel>
                         </HasPermission>
                     </Col>
