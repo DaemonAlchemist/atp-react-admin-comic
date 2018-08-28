@@ -54,7 +54,7 @@ export default ({arc, updateArc, updateThumbnail, updateBanner, updateEnabled, o
                                 inline
                                 value={arc.url}
                                 name="url"
-                                size="regular"
+                                size={null}
                                 onSave={updateArc}
                             />
                         </HasPermission>

@@ -17,7 +17,7 @@ export default ({page, onPageMove, updatePage, onPageDelete}) =>
             <HasPermission yes permissions={["comic.page.update"]}>
                 <InlineEdit.Text
                     id={"page.name.edit" + page.id}
-                    size="regular"
+                    size={null}
                     value={page.name}
                     label="Page Title"
                     name="name"
@@ -65,8 +65,8 @@ export default ({page, onPageMove, updatePage, onPageDelete}) =>
         </Panel.Body>
         <Panel.Footer style={{position: "relative"}}>
             {page.enabled
-                ? <span class="text-success"> {moment(page.postDate).format("MMM D, Y")}</span>
-                : <span class="text-danger"> Disabled</span>
+                ? <span className="text-success"> {moment(page.postDate).format("MMM D, Y")}</span>
+                : <span className="text-danger"> Disabled</span>
             }
             <div style={{position: "absolute", right: 0, top: "2px"}}>
                 <HasPermission yes permissions={["comic.page.update"]}>

@@ -22,7 +22,7 @@ export default ({pageId, userId, comments, onNewComment, onDeleteComment, update
                 </Button>
             </HasPermission>
         </Panel.Heading>
-        <Table fill>
+        <Table>
             <thead>
             <tr>
                 <HasPermission permissions={["comic.commentary.create"]}>

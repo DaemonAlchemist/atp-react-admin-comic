@@ -23,8 +23,8 @@ export default ({characters, selectedCharacterId, isSelected, onCharacterMove, o
                         <DropTargets.ListGroupItem accepts={[characterDragType]} key="insetBeforeDropTarget" id={null} action="into" onMove={onCharacterMove} />
                     </HasPermission>
                     {o(characters).values().sort(sortBy('sortOrder')).map(character => [
-                        <HasPermission yes permissions={["comic.character.create"]}>
-                            <ListGroupItem key={character.id} className={isSelected(character) ? "active" : ""}>
+                        <HasPermission yes permissions={["comic.character.create"]} key={character.id + "Edit"}>
+                            <ListGroupItem className={isSelected(character) ? "active" : ""}>
                                 <Draggable onClick={onClickCharacter(character.id)} type={characterDragType} id={character.id} key={character.id}>
                                     <Icon.Bars /> {character.name}
                                 </Draggable>
@@ -37,8 +37,8 @@ export default ({characters, selectedCharacterId, isSelected, onCharacterMove, o
                                 onMove={onCharacterMove}
                             />
                         </HasPermission>,
-                        <HasPermission no permissions={["comic.character.create"]}>
-                            <ListGroupItem key={character.id} className={isSelected(character) ? "active" : ""} onClick={onClickCharacter(character.id)}>
+                        <HasPermission no permissions={["comic.character.create"]} key={character.id + "NoEdit"}>
+                            <ListGroupItem className={isSelected(character) ? "active" : ""} onClick={onClickCharacter(character.id)}>
                                 {character.name}
                             </ListGroupItem>
                         </HasPermission>
