@@ -19,7 +19,7 @@ export default connectWithLifecycle(
         getChildren: (state, id) => Arc().select.some(() => state, arc => arc.parentId === id),
         sorter: sortBy('sortOrder'),
         draggable: arcDragType,
-        canDrag: hasPermission(get(state), "comic.arc.edit"),
+        canDrag: hasPermission(get(state), "comic.arc.update"),
         canCreate: hasPermission(get(state), "comic.arc.create"),
         canDelete: hasPermission(get(state), "comic.arc.delete"),
         accepts: {
